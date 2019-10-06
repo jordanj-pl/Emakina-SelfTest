@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/jordan/Documents/workspace/Emikana-SelfTest/Emakina-SelfTest.xcodeproj">
+      location = "group:Emakina-SelfTest.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

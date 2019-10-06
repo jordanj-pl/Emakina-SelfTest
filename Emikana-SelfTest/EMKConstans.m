@@ -11,3 +11,4 @@
 @import Foundation;
 
 NSString *const kEMKAPIdomain = @"service.bmf.gv.at";
+NSString *const kEMKApiProtocol = @"https://";

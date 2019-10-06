@@ -17,8 +17,12 @@
 		17395C432347B57500A181A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17395C422347B57500A181A2 /* SystemConfiguration.framework */; };
 		17395C462347B99A00A181A2 /* EMKDataSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C452347B99A00A181A2 /* EMKDataSyncManager.m */; };
 		17395C482347BA3200A181A2 /* EMKConstans.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C472347BA3200A181A2 /* EMKConstans.m */; };
-		1BA7BE4F025E28FF3D7A2868 /* Pods_Emikana_SelfTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC437C26FB9F8A30A7A8B98 /* Pods_Emikana_SelfTest.framework */; };
-		BEBFC1AAC6C5E917586861E8 /* Pods_Emikana_SelfTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA29172A4AED7B7A9D07C6E /* Pods_Emikana_SelfTestTests.framework */; };
+		17395C4F234A545800A181A2 /* EMKCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C4E234A545800A181A2 /* EMKCoreDataHelper.m */; };
+		17395C52234A58E400A181A2 /* Offices.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17395C50234A58E400A181A2 /* Offices.xcdatamodeld */; };
+		17395C5D234A6CE900A181A2 /* Office+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C5A234A6CE800A181A2 /* Office+CoreDataProperties.m */; };
+		17395C5E234A6CE900A181A2 /* Office+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C5C234A6CE900A181A2 /* Office+CoreDataClass.m */; };
+		40CFAB7722BD9CFBFF04BAF4 /* Pods_Emakina_SelfTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DAF23E4F005132E467D193 /* Pods_Emakina_SelfTestTests.framework */; };
+		C0FC709147BBD86BF46A3BE8 /* Pods_Emakina_SelfTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 109DD9D70C2E8BEBDC0C9258 /* Pods_Emakina_SelfTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,8 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0AC437C26FB9F8A30A7A8B98 /* Pods_Emikana_SelfTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emikana_SelfTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		17395C152347AA0E00A181A2 /* Emakina-SelfTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Emakina-SelfTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		109DD9D70C2E8BEBDC0C9258 /* Pods_Emakina_SelfTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emakina_SelfTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17395C152347AA0E00A181A2 /* Emakina Offices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Emakina Offices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17395C182347AA0E00A181A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		17395C192347AA0E00A181A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		17395C222347AA0E00A181A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,10 +55,21 @@
 		17395C452347B99A00A181A2 /* EMKDataSyncManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKDataSyncManager.m; sourceTree = "<group>"; };
 		17395C472347BA3200A181A2 /* EMKConstans.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKConstans.m; sourceTree = "<group>"; };
 		17395C492347BA4700A181A2 /* EMKConstans.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKConstans.h; sourceTree = "<group>"; };
+		17395C4D234A545800A181A2 /* EMKCoreDataHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKCoreDataHelper.h; sourceTree = "<group>"; };
+		17395C4E234A545800A181A2 /* EMKCoreDataHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKCoreDataHelper.m; sourceTree = "<group>"; };
+		17395C51234A58E400A181A2 /* Offices.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Offices.xcdatamodel; sourceTree = "<group>"; };
+		17395C59234A6CE800A181A2 /* Office+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Office+CoreDataClass.h"; sourceTree = "<group>"; };
+		17395C5A234A6CE800A181A2 /* Office+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Office+CoreDataProperties.m"; sourceTree = "<group>"; };
+		17395C5B234A6CE800A181A2 /* Office+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Office+CoreDataProperties.h"; sourceTree = "<group>"; };
+		17395C5C234A6CE900A181A2 /* Office+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Office+CoreDataClass.m"; sourceTree = "<group>"; };
+		1F9CFC8F6AD8EB358FA6D2F3 /* Pods-Emakina-SelfTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emakina-SelfTest.debug.xcconfig"; path = "Target Support Files/Pods-Emakina-SelfTest/Pods-Emakina-SelfTest.debug.xcconfig"; sourceTree = "<group>"; };
 		306AC06054E1B35D19220A9F /* Pods-Emikana-SelfTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTestTests.release.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTestTests/Pods-Emikana-SelfTestTests.release.xcconfig"; sourceTree = "<group>"; };
-		3EA29172A4AED7B7A9D07C6E /* Pods_Emikana_SelfTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emikana_SelfTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41EBD2A74D99E1E8F452FE96 /* Pods-Emakina-SelfTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emakina-SelfTest.release.xcconfig"; path = "Target Support Files/Pods-Emakina-SelfTest/Pods-Emakina-SelfTest.release.xcconfig"; sourceTree = "<group>"; };
+		51DAF23E4F005132E467D193 /* Pods_Emakina_SelfTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emakina_SelfTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A4B89BEBD8104CF98AE181 /* Pods-Emakina-SelfTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emakina-SelfTestTests.release.xcconfig"; path = "Target Support Files/Pods-Emakina-SelfTestTests/Pods-Emakina-SelfTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B209E90E5F264075D49C4B0 /* Pods-Emikana-SelfTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTest.release.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest.release.xcconfig"; sourceTree = "<group>"; };
 		C1445E4F18728DC332635BE6 /* Pods-Emikana-SelfTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTestTests.debug.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTestTests/Pods-Emikana-SelfTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C9DD70BB0B20E89E12ECF470 /* Pods-Emakina-SelfTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emakina-SelfTestTests.debug.xcconfig"; path = "Target Support Files/Pods-Emakina-SelfTestTests/Pods-Emakina-SelfTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E55DEA858E08F86BF765EA31 /* Pods-Emikana-SelfTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTest.debug.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17395C432347B57500A181A2 /* SystemConfiguration.framework in Frameworks */,
-				1BA7BE4F025E28FF3D7A2868 /* Pods_Emikana_SelfTest.framework in Frameworks */,
+				C0FC709147BBD86BF46A3BE8 /* Pods_Emakina_SelfTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEBFC1AAC6C5E917586861E8 /* Pods_Emikana_SelfTestTests.framework in Frameworks */,
+				40CFAB7722BD9CFBFF04BAF4 /* Pods_Emakina_SelfTestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +108,7 @@
 		17395C162347AA0E00A181A2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17395C152347AA0E00A181A2 /* Emakina-SelfTest.app */,
+				17395C152347AA0E00A181A2 /* Emakina Offices.app */,
 				17395C302347AA0F00A181A2 /* Emakina-SelfTestTests.xctest */,
 			);
 			name = Products;
@@ -114,6 +129,8 @@
 				17395C452347B99A00A181A2 /* EMKDataSyncManager.m */,
 				17395C492347BA4700A181A2 /* EMKConstans.h */,
 				17395C472347BA3200A181A2 /* EMKConstans.m */,
+				17395C4D234A545800A181A2 /* EMKCoreDataHelper.h */,
+				17395C4E234A545800A181A2 /* EMKCoreDataHelper.m */,
 			);
 			path = "Emikana-SelfTest";
 			sourceTree = "<group>";
@@ -130,6 +147,11 @@
 		17395C4A234A4CA600A181A2 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				17395C5B234A6CE800A181A2 /* Office+CoreDataProperties.h */,
+				17395C5A234A6CE800A181A2 /* Office+CoreDataProperties.m */,
+				17395C59234A6CE800A181A2 /* Office+CoreDataClass.h */,
+				17395C5C234A6CE900A181A2 /* Office+CoreDataClass.m */,
+				17395C50234A58E400A181A2 /* Offices.xcdatamodeld */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -156,8 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				17395C422347B57500A181A2 /* SystemConfiguration.framework */,
-				0AC437C26FB9F8A30A7A8B98 /* Pods_Emikana_SelfTest.framework */,
-				3EA29172A4AED7B7A9D07C6E /* Pods_Emikana_SelfTestTests.framework */,
+				109DD9D70C2E8BEBDC0C9258 /* Pods_Emakina_SelfTest.framework */,
+				51DAF23E4F005132E467D193 /* Pods_Emakina_SelfTestTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -169,6 +191,10 @@
 				6B209E90E5F264075D49C4B0 /* Pods-Emikana-SelfTest.release.xcconfig */,
 				C1445E4F18728DC332635BE6 /* Pods-Emikana-SelfTestTests.debug.xcconfig */,
 				306AC06054E1B35D19220A9F /* Pods-Emikana-SelfTestTests.release.xcconfig */,
+				1F9CFC8F6AD8EB358FA6D2F3 /* Pods-Emakina-SelfTest.debug.xcconfig */,
+				41EBD2A74D99E1E8F452FE96 /* Pods-Emakina-SelfTest.release.xcconfig */,
+				C9DD70BB0B20E89E12ECF470 /* Pods-Emakina-SelfTestTests.debug.xcconfig */,
+				52A4B89BEBD8104CF98AE181 /* Pods-Emakina-SelfTestTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -192,7 +218,7 @@
 			);
 			name = "Emakina-SelfTest";
 			productName = "Emikana-SelfTest";
-			productReference = 17395C152347AA0E00A181A2 /* Emakina-SelfTest.app */;
+			productReference = 17395C152347AA0E00A181A2 /* Emakina Offices.app */;
 			productType = "com.apple.product-type.application";
 		};
 		17395C2F2347AA0F00A181A2 /* Emakina-SelfTestTests */ = {
@@ -287,7 +313,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Emikana-SelfTestTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Emakina-SelfTestTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -309,7 +335,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Emikana-SelfTest-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Emakina-SelfTest-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -322,15 +348,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Emakina-SelfTest/Pods-Emakina-SelfTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Emakina-SelfTest/Pods-Emakina-SelfTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Emakina-SelfTest/Pods-Emakina-SelfTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -342,9 +368,13 @@
 			files = (
 				17395C462347B99A00A181A2 /* EMKDataSyncManager.m in Sources */,
 				17395C482347BA3200A181A2 /* EMKConstans.m in Sources */,
+				17395C5E234A6CE900A181A2 /* Office+CoreDataClass.m in Sources */,
 				17395C412347B3CE00A181A2 /* EMKOfficesTableViewController.m in Sources */,
 				17395C1A2347AA0E00A181A2 /* AppDelegate.m in Sources */,
+				17395C4F234A545800A181A2 /* EMKCoreDataHelper.m in Sources */,
+				17395C5D234A6CE900A181A2 /* Office+CoreDataProperties.m in Sources */,
 				17395C2B2347AA0F00A181A2 /* main.m in Sources */,
+				17395C52234A58E400A181A2 /* Offices.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,10 +528,11 @@
 		};
 		17395C3A2347AA0F00A181A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E55DEA858E08F86BF765EA31 /* Pods-Emikana-SelfTest.debug.xcconfig */;
+			baseConfigurationReference = 1F9CFC8F6AD8EB358FA6D2F3 /* Pods-Emakina-SelfTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TD73N3AVL7;
 				INFOPLIST_FILE = "Emikana-SelfTest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -509,18 +540,20 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emikana-SelfTest";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emakina-SelfTest";
+				PRODUCT_NAME = "Emakina Offices";
+				PROVISIONING_PROFILE_SPECIFIER = "skyisthelimit.aero Ad Hoc Builds";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		17395C3B2347AA0F00A181A2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B209E90E5F264075D49C4B0 /* Pods-Emikana-SelfTest.release.xcconfig */;
+			baseConfigurationReference = 41EBD2A74D99E1E8F452FE96 /* Pods-Emakina-SelfTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TD73N3AVL7;
 				INFOPLIST_FILE = "Emikana-SelfTest/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -528,18 +561,19 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emikana-SelfTest";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emakina-SelfTest";
+				PRODUCT_NAME = "Emakina Offices";
+				PROVISIONING_PROFILE_SPECIFIER = "skyisthelimit.aero Ad Hoc Builds";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		17395C3D2347AA0F00A181A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1445E4F18728DC332635BE6 /* Pods-Emikana-SelfTestTests.debug.xcconfig */;
+			baseConfigurationReference = C9DD70BB0B20E89E12ECF470 /* Pods-Emakina-SelfTestTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TD73N3AVL7;
 				INFOPLIST_FILE = "Emikana-SelfTestTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -550,6 +584,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emikana-SelfTestTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emakina-SelfTest.app/Emakina-SelfTest";
 			};
@@ -557,10 +593,10 @@
 		};
 		17395C3E2347AA0F00A181A2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 306AC06054E1B35D19220A9F /* Pods-Emikana-SelfTestTests.release.xcconfig */;
+			baseConfigurationReference = 52A4B89BEBD8104CF98AE181 /* Pods-Emakina-SelfTestTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TD73N3AVL7;
 				INFOPLIST_FILE = "Emikana-SelfTestTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -571,6 +607,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emikana-SelfTestTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emakina-SelfTest.app/Emakina-SelfTest";
 			};
@@ -607,6 +645,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		17395C50234A58E400A181A2 /* Offices.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				17395C51234A58E400A181A2 /* Offices.xcdatamodel */,
+			);
+			currentVersion = 17395C51234A58E400A181A2 /* Offices.xcdatamodel */;
+			path = Offices.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 17395C0D2347AA0E00A181A2 /* Project object */;
 }
