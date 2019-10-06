@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		17395C1A2347AA0E00A181A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C192347AA0E00A181A2 /* AppDelegate.m */; };
+		17395C232347AA0E00A181A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17395C212347AA0E00A181A2 /* Main.storyboard */; };
+		17395C252347AA0F00A181A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17395C242347AA0F00A181A2 /* Assets.xcassets */; };
+		17395C282347AA0F00A181A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17395C262347AA0F00A181A2 /* LaunchScreen.storyboard */; };
+		17395C2B2347AA0F00A181A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C2A2347AA0F00A181A2 /* main.m */; };
+		17395C352347AA0F00A181A2 /* Emikana_SelfTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C342347AA0F00A181A2 /* Emikana_SelfTestTests.m */; };
+		17395C412347B3CE00A181A2 /* EMKOfficesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C402347B3CE00A181A2 /* EMKOfficesTableViewController.m */; };
+		17395C432347B57500A181A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17395C422347B57500A181A2 /* SystemConfiguration.framework */; };
+		17395C462347B99A00A181A2 /* EMKDataSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C452347B99A00A181A2 /* EMKDataSyncManager.m */; };
+		17395C482347BA3200A181A2 /* EMKConstans.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C472347BA3200A181A2 /* EMKConstans.m */; };
+		1BA7BE4F025E28FF3D7A2868 /* Pods_Emikana_SelfTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC437C26FB9F8A30A7A8B98 /* Pods_Emikana_SelfTest.framework */; };
+		BEBFC1AAC6C5E917586861E8 /* Pods_Emikana_SelfTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA29172A4AED7B7A9D07C6E /* Pods_Emikana_SelfTestTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17395C312347AA0F00A181A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17395C0D2347AA0E00A181A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17395C142347AA0E00A181A2;
+			remoteInfo = "Emikana-SelfTest";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0AC437C26FB9F8A30A7A8B98 /* Pods_Emikana_SelfTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emikana_SelfTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17395C152347AA0E00A181A2 /* Emakina-SelfTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Emakina-SelfTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17395C182347AA0E00A181A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		17395C192347AA0E00A181A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		17395C222347AA0E00A181A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		17395C242347AA0F00A181A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17395C272347AA0F00A181A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		17395C292347AA0F00A181A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17395C2A2347AA0F00A181A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		17395C302347AA0F00A181A2 /* Emakina-SelfTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Emakina-SelfTestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17395C342347AA0F00A181A2 /* Emikana_SelfTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Emikana_SelfTestTests.m; sourceTree = "<group>"; };
+		17395C362347AA0F00A181A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17395C3F2347B3CE00A181A2 /* EMKOfficesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesTableViewController.h; sourceTree = "<group>"; };
+		17395C402347B3CE00A181A2 /* EMKOfficesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficesTableViewController.m; sourceTree = "<group>"; };
+		17395C422347B57500A181A2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		17395C442347B99A00A181A2 /* EMKDataSyncManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKDataSyncManager.h; sourceTree = "<group>"; };
+		17395C452347B99A00A181A2 /* EMKDataSyncManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKDataSyncManager.m; sourceTree = "<group>"; };
+		17395C472347BA3200A181A2 /* EMKConstans.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKConstans.m; sourceTree = "<group>"; };
+		17395C492347BA4700A181A2 /* EMKConstans.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKConstans.h; sourceTree = "<group>"; };
+		306AC06054E1B35D19220A9F /* Pods-Emikana-SelfTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTestTests.release.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTestTests/Pods-Emikana-SelfTestTests.release.xcconfig"; sourceTree = "<group>"; };
+		3EA29172A4AED7B7A9D07C6E /* Pods_Emikana_SelfTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emikana_SelfTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B209E90E5F264075D49C4B0 /* Pods-Emikana-SelfTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTest.release.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest.release.xcconfig"; sourceTree = "<group>"; };
+		C1445E4F18728DC332635BE6 /* Pods-Emikana-SelfTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTestTests.debug.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTestTests/Pods-Emikana-SelfTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E55DEA858E08F86BF765EA31 /* Pods-Emikana-SelfTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTest.debug.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		17395C122347AA0E00A181A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17395C432347B57500A181A2 /* SystemConfiguration.framework in Frameworks */,
+				1BA7BE4F025E28FF3D7A2868 /* Pods_Emikana_SelfTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17395C2D2347AA0F00A181A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEBFC1AAC6C5E917586861E8 /* Pods_Emikana_SelfTestTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17395C0C2347AA0E00A181A2 = {
+			isa = PBXGroup;
+			children = (
+				17395C172347AA0E00A181A2 /* Emikana-SelfTest */,
+				17395C332347AA0F00A181A2 /* Emikana-SelfTestTests */,
+				17395C162347AA0E00A181A2 /* Products */,
+				BF989FCEC1C74829378088DD /* Pods */,
+				720BDB9454BF760666F783C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		17395C162347AA0E00A181A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17395C152347AA0E00A181A2 /* Emakina-SelfTest.app */,
+				17395C302347AA0F00A181A2 /* Emakina-SelfTestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		17395C172347AA0E00A181A2 /* Emikana-SelfTest */ = {
+			isa = PBXGroup;
+			children = (
+				17395C4C234A4CFA00A181A2 /* Views */,
+				17395C4B234A4CB500A181A2 /* View Controllers */,
+				17395C4A234A4CA600A181A2 /* Data Model */,
+				17395C182347AA0E00A181A2 /* AppDelegate.h */,
+				17395C192347AA0E00A181A2 /* AppDelegate.m */,
+				17395C242347AA0F00A181A2 /* Assets.xcassets */,
+				17395C292347AA0F00A181A2 /* Info.plist */,
+				17395C2A2347AA0F00A181A2 /* main.m */,
+				17395C442347B99A00A181A2 /* EMKDataSyncManager.h */,
+				17395C452347B99A00A181A2 /* EMKDataSyncManager.m */,
+				17395C492347BA4700A181A2 /* EMKConstans.h */,
+				17395C472347BA3200A181A2 /* EMKConstans.m */,
+			);
+			path = "Emikana-SelfTest";
+			sourceTree = "<group>";
+		};
+		17395C332347AA0F00A181A2 /* Emikana-SelfTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				17395C342347AA0F00A181A2 /* Emikana_SelfTestTests.m */,
+				17395C362347AA0F00A181A2 /* Info.plist */,
+			);
+			path = "Emikana-SelfTestTests";
+			sourceTree = "<group>";
+		};
+		17395C4A234A4CA600A181A2 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		17395C4B234A4CB500A181A2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				17395C3F2347B3CE00A181A2 /* EMKOfficesTableViewController.h */,
+				17395C402347B3CE00A181A2 /* EMKOfficesTableViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		17395C4C234A4CFA00A181A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				17395C212347AA0E00A181A2 /* Main.storyboard */,
+				17395C262347AA0F00A181A2 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		720BDB9454BF760666F783C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17395C422347B57500A181A2 /* SystemConfiguration.framework */,
+				0AC437C26FB9F8A30A7A8B98 /* Pods_Emikana_SelfTest.framework */,
+				3EA29172A4AED7B7A9D07C6E /* Pods_Emikana_SelfTestTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF989FCEC1C74829378088DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E55DEA858E08F86BF765EA31 /* Pods-Emikana-SelfTest.debug.xcconfig */,
+				6B209E90E5F264075D49C4B0 /* Pods-Emikana-SelfTest.release.xcconfig */,
+				C1445E4F18728DC332635BE6 /* Pods-Emikana-SelfTestTests.debug.xcconfig */,
+				306AC06054E1B35D19220A9F /* Pods-Emikana-SelfTestTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17395C142347AA0E00A181A2 /* Emakina-SelfTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17395C392347AA0F00A181A2 /* Build configuration list for PBXNativeTarget "Emakina-SelfTest" */;
+			buildPhases = (
+				5CE320C86EBA554B83F71C67 /* [CP] Check Pods Manifest.lock */,
+				17395C112347AA0E00A181A2 /* Sources */,
+				17395C122347AA0E00A181A2 /* Frameworks */,
+				17395C132347AA0E00A181A2 /* Resources */,
+				7EDEF31F60BB5C2DF09F2FE0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Emakina-SelfTest";
+			productName = "Emikana-SelfTest";
+			productReference = 17395C152347AA0E00A181A2 /* Emakina-SelfTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		17395C2F2347AA0F00A181A2 /* Emakina-SelfTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17395C3C2347AA0F00A181A2 /* Build configuration list for PBXNativeTarget "Emakina-SelfTestTests" */;
+			buildPhases = (
+				0E819B6FAC8F2F809A9775EF /* [CP] Check Pods Manifest.lock */,
+				17395C2C2347AA0F00A181A2 /* Sources */,
+				17395C2D2347AA0F00A181A2 /* Frameworks */,
+				17395C2E2347AA0F00A181A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17395C322347AA0F00A181A2 /* PBXTargetDependency */,
+			);
+			name = "Emakina-SelfTestTests";
+			productName = "Emikana-SelfTestTests";
+			productReference = 17395C302347AA0F00A181A2 /* Emakina-SelfTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		17395C0D2347AA0E00A181A2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = skyisthelimit.aero;
+				TargetAttributes = {
+					17395C142347AA0E00A181A2 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					17395C2F2347AA0F00A181A2 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 17395C142347AA0E00A181A2;
+					};
+				};
+			};
+			buildConfigurationList = 17395C102347AA0E00A181A2 /* Build configuration list for PBXProject "Emakina-SelfTest" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 17395C0C2347AA0E00A181A2;
+			productRefGroup = 17395C162347AA0E00A181A2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17395C142347AA0E00A181A2 /* Emakina-SelfTest */,
+				17395C2F2347AA0F00A181A2 /* Emakina-SelfTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17395C132347AA0E00A181A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17395C282347AA0F00A181A2 /* LaunchScreen.storyboard in Resources */,
+				17395C252347AA0F00A181A2 /* Assets.xcassets in Resources */,
+				17395C232347AA0E00A181A2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17395C2E2347AA0F00A181A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E819B6FAC8F2F809A9775EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Emikana-SelfTestTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CE320C86EBA554B83F71C67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Emikana-SelfTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EDEF31F60BB5C2DF09F2FE0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Emikana-SelfTest/Pods-Emikana-SelfTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17395C112347AA0E00A181A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17395C462347B99A00A181A2 /* EMKDataSyncManager.m in Sources */,
+				17395C482347BA3200A181A2 /* EMKConstans.m in Sources */,
+				17395C412347B3CE00A181A2 /* EMKOfficesTableViewController.m in Sources */,
+				17395C1A2347AA0E00A181A2 /* AppDelegate.m in Sources */,
+				17395C2B2347AA0F00A181A2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17395C2C2347AA0F00A181A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17395C352347AA0F00A181A2 /* Emikana_SelfTestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17395C322347AA0F00A181A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17395C142347AA0E00A181A2 /* Emakina-SelfTest */;
+			targetProxy = 17395C312347AA0F00A181A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		17395C212347AA0E00A181A2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17395C222347AA0E00A181A2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		17395C262347AA0F00A181A2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17395C272347AA0F00A181A2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		17395C372347AA0F00A181A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		17395C382347AA0F00A181A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		17395C3A2347AA0F00A181A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E55DEA858E08F86BF765EA31 /* Pods-Emikana-SelfTest.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TD73N3AVL7;
+				INFOPLIST_FILE = "Emikana-SelfTest/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emikana-SelfTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		17395C3B2347AA0F00A181A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B209E90E5F264075D49C4B0 /* Pods-Emikana-SelfTest.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TD73N3AVL7;
+				INFOPLIST_FILE = "Emikana-SelfTest/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emikana-SelfTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		17395C3D2347AA0F00A181A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1445E4F18728DC332635BE6 /* Pods-Emikana-SelfTestTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TD73N3AVL7;
+				INFOPLIST_FILE = "Emikana-SelfTestTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emikana-SelfTestTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emakina-SelfTest.app/Emakina-SelfTest";
+			};
+			name = Debug;
+		};
+		17395C3E2347AA0F00A181A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 306AC06054E1B35D19220A9F /* Pods-Emikana-SelfTestTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TD73N3AVL7;
+				INFOPLIST_FILE = "Emikana-SelfTestTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emikana-SelfTestTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emakina-SelfTest.app/Emakina-SelfTest";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		17395C102347AA0E00A181A2 /* Build configuration list for PBXProject "Emakina-SelfTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17395C372347AA0F00A181A2 /* Debug */,
+				17395C382347AA0F00A181A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17395C392347AA0F00A181A2 /* Build configuration list for PBXNativeTarget "Emakina-SelfTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17395C3A2347AA0F00A181A2 /* Debug */,
+				17395C3B2347AA0F00A181A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17395C3C2347AA0F00A181A2 /* Build configuration list for PBXNativeTarget "Emakina-SelfTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17395C3D2347AA0F00A181A2 /* Debug */,
+				17395C3E2347AA0F00A181A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 17395C0D2347AA0E00A181A2 /* Project object */;
+}
