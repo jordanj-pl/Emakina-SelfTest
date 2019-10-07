@@ -14,6 +14,7 @@
 #import "EMKCoreDataHelper.h"
 #import "Office+CoreDataProperties.h"
 #import "EMKOfficeTableViewCell.h"
+#import "EMKOfficeDetailsTableViewController.h"
 
 @interface EMKOfficesTableViewController ()<NSFetchedResultsControllerDelegate>
 
@@ -65,45 +66,23 @@
     
     Office *office = [self.frc objectAtIndexPath:indexPath];
     cell.nameLabel.text = office.name;
-    cell.addressLabel.text = [NSString stringWithFormat:@"%d %@, %@", office.zip, office.city, office.street];
+	cell.addressLabel.text = [NSString stringWithFormat:@"%@ %@, %@", office.zip, office.city, office.street];
     
     return cell;
 }
 
+#pragma mark - Table view delegate
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+	Office *office = (Office*)[self.frc objectAtIndexPath:indexPath];
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+    EMKOfficeDetailsTableViewController *officeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"officeDetails"];
+    officeVC.officeID = office.objectID;
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    [self.navigationController pushViewController:officeVC animated:YES];
 }
-*/
+
 
 /*
 #pragma mark - Navigation
