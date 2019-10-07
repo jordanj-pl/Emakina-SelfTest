@@ -72,16 +72,18 @@ NSString *dbFilename = @"Offices.sqlite";
         return;
     }
 
+    NSLog(@"DB URL: %@", [self storeURL]);
+
     BOOL useMigrationManager = YES;
     if(useMigrationManager && [self isMigrationNecessaryForStore:[self storeURL]]) {
         [self performBackgroundManagedMigrationForStore:[self storeURL]];
     } else {
         NSDictionary *options = @{
                                   NSMigratePersistentStoresAutomaticallyOption: @(YES),
-                                  NSInferMappingModelAutomaticallyOption: @(NO) //,
-                                  //NSSQLitePragmasOption: @{
-                                    //      @"journal_mode": @"DELETE"
-                                      //    }
+                                  NSInferMappingModelAutomaticallyOption: @(NO),
+                                  NSSQLitePragmasOption: @{
+                                          @"journal_mode": @"DELETE"
+                                          }
         };
 
         NSError *error = nil;

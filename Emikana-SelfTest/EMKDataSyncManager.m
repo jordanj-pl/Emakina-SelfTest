@@ -103,11 +103,10 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 	__weak typeof(self) weakSelf = self;
 
 	for (NSDictionary *officeProperties in jsonObj) {
-		NSLog(@"Office: %@", officeProperties);
 		[cdh.importContext performBlockAndWait:^{
 			typeof(self) strongSelf = weakSelf;
 
-			Office *office = (Office*)[strongSelf insertUniqueObjectInTargetEntity:@"Office" uniqueAttributeKey:@"identifier" uniqueAttributeValue:officeProperties[@"DisId"] attributeValues:officeProperties inContext:cdh.importContext];
+			Office *office = (Office*)[strongSelf insertUniqueObjectInTargetEntity:@"Office" uniqueAttributeKey:@"identifier" uniqueAttributeValue:officeProperties[@"DisId"] inContext:cdh.importContext];
 
 			[office setValuesForKeysWithDictionary:officeProperties];
 
@@ -139,7 +138,7 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
     return fetchRequestResults.lastObject;
 }
 
--(NSManagedObject*)insertUniqueObjectInTargetEntity:(NSString *)entity uniqueAttributeKey:(NSString *)uniqueAttributeKey uniqueAttributeValue:(NSString *)uniqueAttributeValue attributeValues:(NSDictionary *)attributeValues inContext:(NSManagedObjectContext *)context {
+-(NSManagedObject*)insertUniqueObjectInTargetEntity:(NSString *)entity uniqueAttributeKey:(NSString *)uniqueAttributeKey uniqueAttributeValue:(NSString *)uniqueAttributeValue inContext:(NSManagedObjectContext *)context {
 
     if(uniqueAttributeValue.length > 0) {
         NSManagedObject *existingObject = [self existingObjectInContext:context
@@ -151,7 +150,6 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
             return existingObject;
         } else {
             NSManagedObject *newObject = [NSEntityDescription insertNewObjectForEntityForName:entity inManagedObjectContext:context];
-            [newObject setValuesForKeysWithDictionary:attributeValues];
             return newObject;
         }
     } else {
