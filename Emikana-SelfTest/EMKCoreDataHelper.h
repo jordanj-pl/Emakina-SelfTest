@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)saveContext;
 -(void)backgroundSaveContext;
 
+-(NSString*)lastSyncEtag;
+-(void)saveLastSyncEtag:(NSString *_Nonnull)etag;
+
 @end
 
 NS_ASSUME_NONNULL_END

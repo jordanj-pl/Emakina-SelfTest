@@ -295,5 +295,17 @@ NSString *dbFilename = @"Offices.sqlite";
     }
 }
 
+#pragma mark - Etag support
+
+-(NSString*)lastSyncEtag {
+	return self.store.metadata[@"EMKLastSyncEtag"];
+}
+
+-(void)saveLastSyncEtag:(NSString *)etag {
+
+	NSMutableDictionary *dictionary = [self.store.metadata mutableCopy];
+	[dictionary setObject:etag forKey:@"EMKLastSyncEtag"];
+	[self.coordinator setMetadata:dictionary forPersistentStore:self.store];
+}
 
 @end

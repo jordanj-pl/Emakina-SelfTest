@@ -78,7 +78,16 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 -(void)syncWithDatabase:(NSData*)data etag:(NSString*)etag {
 	NSLog(@"QUEUE: %@", [NSOperationQueue currentQueue]);
 	NSLog(@"Etag: %@", etag);
-	NSLog(@"DATA: %@", data);
+
+	__block EMKCoreDataHelper *cdh;
+	dispatch_sync(dispatch_get_main_queue(), ^{
+		cdh = ((AppDelegate*)[UIApplication sharedApplication].delegate).coreDataHelper;
+	});
+
+	if([cdh.lastSyncEtag isEqualToString:etag]) {
+		NSLog(@"Syncing skipped. Etag is the same.");
+		return;
+	}
 
 	NSError *deserializationError;
 
@@ -95,11 +104,6 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 		return;
 	}
 
-	__block EMKCoreDataHelper *cdh;
-	dispatch_sync(dispatch_get_main_queue(), ^{
-		cdh = ((AppDelegate*)[UIApplication sharedApplication].delegate).coreDataHelper;
-	});
-
 	__weak typeof(self) weakSelf = self;
 
 	for (NSDictionary *officeProperties in jsonObj) {
@@ -113,6 +117,10 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 			[strongSelf saveContext:cdh.importContext];
 		}];
 	}
+
+	[cdh backgroundSaveContext];
+
+	[cdh saveLastSyncEtag:etag];
 }
 
 #pragma mark - CoreData methods
