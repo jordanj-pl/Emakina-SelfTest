@@ -8,7 +8,16 @@
 
 #import "EMKOfficesTableViewController.h"
 
-@interface EMKOfficesTableViewController ()
+@import CoreData;
+
+#import "AppDelegate.h"
+#import "EMKCoreDataHelper.h"
+#import "Office+CoreDataProperties.h"
+#import "EMKOfficeTableViewCell.h"
+
+@interface EMKOfficesTableViewController ()<NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, strong) NSFetchedResultsController *frc;
 
 @end
 
@@ -16,35 +25,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    EMKCoreDataHelper *cdh = ((AppDelegate*)[UIApplication sharedApplication].delegate).coreDataHelper;
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Office"];
+    request.sortDescriptors = [NSArray arrayWithObjects:
+                               [NSSortDescriptor sortDescriptorWithKey:@"identifier" ascending:YES],nil];
+    [request setFetchBatchSize:15];
+
+    self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                        managedObjectContext:cdh.context
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    self.frc.delegate = self;
+
+	[self.frc.managedObjectContext performBlockAndWait:^{
+		NSError *error = nil;
+		if(![self.frc performFetch:&error]) {
+			NSLog(@"FAILED to perform fetch: %@", error);
+		}
+
+		[self.tableView reloadData];
+	}];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.frc.sections[0].numberOfObjects;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    EMKOfficeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OfficeCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    Office *office = [self.frc objectAtIndexPath:indexPath];
+    cell.nameLabel.text = office.name;
+    cell.addressLabel.text = [NSString stringWithFormat:@"%d %@, %@", office.zip, office.city, office.street];
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

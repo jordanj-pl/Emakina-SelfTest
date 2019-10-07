@@ -50,7 +50,7 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 	[self.reachability stopNotifier];
 }
 
--(void)sync {
+-(void)syncWithCompletionHandler:(void (^)(bool))completion {
 
 	if(!self.reachability.isReachable) {
 		NSLog(@"Sync server is offline");
@@ -71,6 +71,8 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 		NSData *utf8Data = [latin1String dataUsingEncoding:NSUTF8StringEncoding];
 
 		[strongSelf syncWithDatabase:utf8Data etag: etag];
+//TODO Add error handling
+		completion(YES);
 	}];
 	[dataTask resume];
 }

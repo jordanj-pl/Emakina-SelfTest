@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface EMKDataSyncManager : NSObject
 
--(void)sync;
+-(void)syncWithCompletionHandler:(void (^)(bool))completion;
 
 @end
 

@@ -19,7 +19,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 	_dataSyncManager = [EMKDataSyncManager new];
-	[_dataSyncManager sync];
+	[_dataSyncManager syncWithCompletionHandler:^(bool success) {
+		if(success) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				UIApplication *app = [UIApplication sharedApplication];
+				UINavigationController *nc = (UINavigationController*)app.keyWindow.rootViewController;
+
+				UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+				UIViewController *rootVC = [sb instantiateViewControllerWithIdentifier:@"OfficesTable"];
+
+				[nc setViewControllers:@[rootVC] animated:YES];
+			});
+		}
+	}];
 
 
 	return YES;
