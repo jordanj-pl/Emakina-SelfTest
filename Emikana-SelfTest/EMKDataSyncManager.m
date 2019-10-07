@@ -17,6 +17,8 @@
 #import "Office+CoreDataClass.h"
 #import "Office+CoreDataProperties.h"
 
+NSString *const kEMKDataSyncManagerProgressNotificationName = @"EMKDataSyncManagerProgressNotificationName";
+
 NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesRetrieveQueue";
 
 NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
@@ -54,6 +56,10 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 
 	if(!self.reachability.isReachable) {
 		NSLog(@"Sync server is offline");
+		[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+			@"status": @"Offline.",
+			@"progress": @(0.0)
+		}];
 		return;
 	}
 
@@ -74,10 +80,16 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 //TODO Add error handling
 		completion(YES);
 	}];
+
+	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+		@"status": @"Syncing with server...",
+		@"progress": @(0.0)
+	}];
+
 	[dataTask resume];
 }
 
--(void)syncWithDatabase:(NSData*)data etag:(NSString*)etag {
+-(bool)syncWithDatabase:(NSData*)data etag:(NSString*)etag {
 	NSLog(@"QUEUE: %@", [NSOperationQueue currentQueue]);
 	NSLog(@"Etag: %@", etag);
 
@@ -88,7 +100,12 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 
 	if([cdh.lastSyncEtag isEqualToString:etag]) {
 		NSLog(@"Syncing skipped. Etag is the same.");
-		return;
+		[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+			@"status": @"Database is up to date.",
+			@"progress": @(1.0)
+		}];
+
+		return YES;
 	}
 
 	NSError *deserializationError;
@@ -97,17 +114,35 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 	if(!jsonObj) {
 		NSLog(@"JSON error: %@", deserializationError);
 		//TODO handle error
-		return;
+
+		[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+			@"status": @"Invalid server response.",
+			@"progress": @(0.0)
+		}];
+
+		return NO;
 	}
 
 	if(![jsonObj isKindOfClass:[NSArray class]]) {
 		NSLog(@"JSON Root is not a type of list");
 		//TODO handle error
-		return;
+
+		[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+			@"status": @"Invalid server response.",
+			@"progress": @(0.0)
+		}];
+
+		return NO;
 	}
 
-	__weak typeof(self) weakSelf = self;
+	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+		@"status": @"Updating database...",
+		@"progress": @(0.5)
+	}];
 
+	__weak typeof(self) weakSelf = self;
+	NSUInteger numberOfOffices = [jsonObj count];
+	NSUInteger currentObject = 0;
 	for (NSDictionary *officeProperties in jsonObj) {
 		[cdh.importContext performBlockAndWait:^{
 			typeof(self) strongSelf = weakSelf;
@@ -118,11 +153,32 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 
 			[strongSelf saveContext:cdh.importContext];
 		}];
+
+		currentObject++;
+
+		//Updating UI after each DB entry is not necessary.
+		if(currentObject % 10 == 0) {
+			double progress = (double)currentObject / (double)numberOfOffices;
+			progress = progress*0.5 + 0.5;// It is assumed that downloading data from server takes half of the time, and processing db update takes another half.
+
+			[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+				@"status": @"Updating database...",
+				@"progress": @(progress)
+			}];
+		}
+
 	}
 
 	[cdh backgroundSaveContext];
 
 	[cdh saveLastSyncEtag:etag];
+
+	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+		@"status": @"Update completed.",
+		@"progress": @(1.0)
+	}];
+
+	return YES;
 }
 
 #pragma mark - CoreData methods

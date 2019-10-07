@@ -21,7 +21,8 @@
 	_dataSyncManager = [EMKDataSyncManager new];
 	[_dataSyncManager syncWithCompletionHandler:^(bool success) {
 		if(success) {
-			dispatch_async(dispatch_get_main_queue(), ^{
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+
 				UIApplication *app = [UIApplication sharedApplication];
 				UINavigationController *nc = (UINavigationController*)app.keyWindow.rootViewController;
 

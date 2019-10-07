@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *const kEMKDataSyncManagerProgressNotificationName;
+
 @interface EMKDataSyncManager : NSObject
 
 -(void)syncWithCompletionHandler:(void (^)(bool))completion;

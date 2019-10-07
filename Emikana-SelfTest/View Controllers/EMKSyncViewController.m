@@ -8,7 +8,12 @@
 
 #import "EMKSyncViewController.h"
 
+#import "EMKDataSyncManager.h"
+
 @interface EMKSyncViewController ()
+
+@property (nonatomic, weak) IBOutlet UILabel *statusLabel;
+@property (nonatomic, weak) IBOutlet UIProgressView *progressView;
 
 @end
 
@@ -16,7 +21,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+	__weak typeof(self) weakSelf = self;
+
+    [[NSNotificationCenter defaultCenter] addObserverForName:kEMKDataSyncManagerProgressNotificationName object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+
+		typeof(self) strongSelf = weakSelf;
+
+		strongSelf.statusLabel.text = note.userInfo[@"status"];
+		strongSelf.progressView.progress = [note.userInfo[@"progress"] floatValue];
+	}];
 }
 
 /*

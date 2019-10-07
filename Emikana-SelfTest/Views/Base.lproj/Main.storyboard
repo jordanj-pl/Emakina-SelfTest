@@ -96,11 +96,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Y8k-0r-NDt">
-                                <rect key="frame" x="20" y="447" width="374" height="2"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Y8k-0r-NDt">
+                                <rect key="frame" x="20" y="438" width="374" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="vec-AQ-ggH"/>
+                                    <constraint firstAttribute="height" constant="20" id="vec-AQ-ggH"/>
                                 </constraints>
+                                <color key="progressTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Syncing data with server..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yA2-Wk-dUo">
                                 <rect key="frame" x="0.0" y="188" width="414" height="40"/>
@@ -125,6 +127,10 @@
                         <viewLayoutGuide key="safeArea" id="ZP2-64-FbY"/>
                     </view>
                     <navigationItem key="navigationItem" id="EWN-oO-AZK"/>
+                    <connections>
+                        <outlet property="progressView" destination="Y8k-0r-NDt" id="Ahn-Xw-wCy"/>
+                        <outlet property="statusLabel" destination="yA2-Wk-dUo" id="Qr9-y3-63O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXN-KH-S6S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
