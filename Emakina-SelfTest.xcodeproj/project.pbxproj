@@ -28,6 +28,7 @@
 		17395C6D234BC92D00A181A2 /* EMKOfficeDetailsDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C6C234BC92D00A181A2 /* EMKOfficeDetailsDetailsCell.m */; };
 		17395C70234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C6F234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m */; };
 		17395C73234CE98400A181A2 /* EMKOfficeMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C72234CE98400A181A2 /* EMKOfficeMapViewController.m */; };
+		17BCAC75234D2BBC002B629E /* EMKApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BCAC74234D2BBC002B629E /* EMKApiManager.m */; };
 		40CFAB7722BD9CFBFF04BAF4 /* Pods_Emakina_SelfTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DAF23E4F005132E467D193 /* Pods_Emakina_SelfTestTests.framework */; };
 		C0FC709147BBD86BF46A3BE8 /* Pods_Emakina_SelfTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 109DD9D70C2E8BEBDC0C9258 /* Pods_Emakina_SelfTest.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,8 @@
 		17395C6F234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficeDetailsImageCell.m; sourceTree = "<group>"; };
 		17395C71234CE98400A181A2 /* EMKOfficeMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficeMapViewController.h; sourceTree = "<group>"; };
 		17395C72234CE98400A181A2 /* EMKOfficeMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficeMapViewController.m; sourceTree = "<group>"; };
+		17BCAC73234D2BBC002B629E /* EMKApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKApiManager.h; sourceTree = "<group>"; };
+		17BCAC74234D2BBC002B629E /* EMKApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKApiManager.m; sourceTree = "<group>"; };
 		1F9CFC8F6AD8EB358FA6D2F3 /* Pods-Emakina-SelfTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emakina-SelfTest.debug.xcconfig"; path = "Target Support Files/Pods-Emakina-SelfTest/Pods-Emakina-SelfTest.debug.xcconfig"; sourceTree = "<group>"; };
 		306AC06054E1B35D19220A9F /* Pods-Emikana-SelfTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTestTests.release.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTestTests/Pods-Emikana-SelfTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		41EBD2A74D99E1E8F452FE96 /* Pods-Emakina-SelfTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emakina-SelfTest.release.xcconfig"; path = "Target Support Files/Pods-Emakina-SelfTest/Pods-Emakina-SelfTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		17395C172347AA0E00A181A2 /* Emikana-SelfTest */ = {
 			isa = PBXGroup;
 			children = (
+				17BCAC72234D2B73002B629E /* Networking */,
 				17395C4C234A4CFA00A181A2 /* Views */,
 				17395C4B234A4CB500A181A2 /* View Controllers */,
 				17395C4A234A4CA600A181A2 /* Data Model */,
@@ -207,6 +211,15 @@
 				17395C6F234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		17BCAC72234D2B73002B629E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				17BCAC73234D2BBC002B629E /* EMKApiManager.h */,
+				17BCAC74234D2BBC002B629E /* EMKApiManager.m */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		720BDB9454BF760666F783C0 /* Frameworks */ = {
@@ -401,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17BCAC75234D2BBC002B629E /* EMKApiManager.m in Sources */,
 				17395C462347B99A00A181A2 /* EMKDataSyncManager.m in Sources */,
 				17395C61234B9D1100A181A2 /* EMKSyncViewController.m in Sources */,
 				17395C482347BA3200A181A2 /* EMKConstans.m in Sources */,
