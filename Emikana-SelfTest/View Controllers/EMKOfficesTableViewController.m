@@ -31,7 +31,7 @@
 
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Office"];
     request.sortDescriptors = [NSArray arrayWithObjects:
-                               [NSSortDescriptor sortDescriptorWithKey:@"identifier" ascending:YES],nil];
+                               [NSSortDescriptor sortDescriptorWithKey:@"zip" ascending:YES],nil];
     [request setFetchBatchSize:15];
 
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
