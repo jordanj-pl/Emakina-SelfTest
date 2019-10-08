@@ -15,6 +15,8 @@
 #import "EMKOfficeDetailsNameCell.h"
 #import "EMKOfficeDetailsDetailsCell.h"
 
+#import "EMKOfficeMapViewController.h"
+
 @interface EMKOfficeDetailsTableViewController ()
 
 @property (nonatomic, strong) Office *office;
@@ -127,6 +129,22 @@
 //TODO format button cell to look like a button
 
     return cell;
+}
+
+#pragma mark - Table view delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+	NSLog(@"didSelect: %@", indexPath);
+
+	if(indexPath.row == 5) {
+
+		EMKOfficeMapViewController *mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"officeDetailsMap"];
+		mapVC.officeID = self.office.objectID;
+
+		[self.navigationController pushViewController:mapVC animated:YES];
+
+	}
 }
 
 /*

@@ -27,6 +27,7 @@
 		17395C6A234BC8E500A181A2 /* EMKOfficeDetailsNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C69234BC8E500A181A2 /* EMKOfficeDetailsNameCell.m */; };
 		17395C6D234BC92D00A181A2 /* EMKOfficeDetailsDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C6C234BC92D00A181A2 /* EMKOfficeDetailsDetailsCell.m */; };
 		17395C70234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C6F234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m */; };
+		17395C73234CE98400A181A2 /* EMKOfficeMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C72234CE98400A181A2 /* EMKOfficeMapViewController.m */; };
 		40CFAB7722BD9CFBFF04BAF4 /* Pods_Emakina_SelfTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DAF23E4F005132E467D193 /* Pods_Emakina_SelfTestTests.framework */; };
 		C0FC709147BBD86BF46A3BE8 /* Pods_Emakina_SelfTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 109DD9D70C2E8BEBDC0C9258 /* Pods_Emakina_SelfTest.framework */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,8 @@
 		17395C6C234BC92D00A181A2 /* EMKOfficeDetailsDetailsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficeDetailsDetailsCell.m; sourceTree = "<group>"; };
 		17395C6E234BFA0700A181A2 /* EMKOfficeDetailsImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficeDetailsImageCell.h; sourceTree = "<group>"; };
 		17395C6F234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficeDetailsImageCell.m; sourceTree = "<group>"; };
+		17395C71234CE98400A181A2 /* EMKOfficeMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficeMapViewController.h; sourceTree = "<group>"; };
+		17395C72234CE98400A181A2 /* EMKOfficeMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficeMapViewController.m; sourceTree = "<group>"; };
 		1F9CFC8F6AD8EB358FA6D2F3 /* Pods-Emakina-SelfTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emakina-SelfTest.debug.xcconfig"; path = "Target Support Files/Pods-Emakina-SelfTest/Pods-Emakina-SelfTest.debug.xcconfig"; sourceTree = "<group>"; };
 		306AC06054E1B35D19220A9F /* Pods-Emikana-SelfTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emikana-SelfTestTests.release.xcconfig"; path = "Target Support Files/Pods-Emikana-SelfTestTests/Pods-Emikana-SelfTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		41EBD2A74D99E1E8F452FE96 /* Pods-Emakina-SelfTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Emakina-SelfTest.release.xcconfig"; path = "Target Support Files/Pods-Emakina-SelfTest/Pods-Emakina-SelfTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				17395C402347B3CE00A181A2 /* EMKOfficesTableViewController.m */,
 				17395C65234BBDBD00A181A2 /* EMKOfficeDetailsTableViewController.h */,
 				17395C66234BBDBD00A181A2 /* EMKOfficeDetailsTableViewController.m */,
+				17395C71234CE98400A181A2 /* EMKOfficeMapViewController.h */,
+				17395C72234CE98400A181A2 /* EMKOfficeMapViewController.m */,
 				17395C5F234B9D1100A181A2 /* EMKSyncViewController.h */,
 				17395C60234B9D1100A181A2 /* EMKSyncViewController.m */,
 			);
@@ -409,6 +414,7 @@
 				17395C5D234A6CE900A181A2 /* Office+CoreDataProperties.m in Sources */,
 				17395C2B2347AA0F00A181A2 /* main.m in Sources */,
 				17395C6D234BC92D00A181A2 /* EMKOfficeDetailsDetailsCell.m in Sources */,
+				17395C73234CE98400A181A2 /* EMKOfficeMapViewController.m in Sources */,
 				17395C67234BBDBD00A181A2 /* EMKOfficeDetailsTableViewController.m in Sources */,
 				17395C52234A58E400A181A2 /* Offices.xcdatamodeld in Sources */,
 			);
