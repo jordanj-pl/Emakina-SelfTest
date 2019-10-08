@@ -18,7 +18,7 @@
 	NSNumberFormatter *zipFormatter = [NSNumberFormatter new];
 	zipFormatter.numberStyle = NSNumberFormatterNoStyle;
 
-	self.zip = [zipFormatter numberFromString:dictionary[@"DisPlz"]];
+	self.zip = [NSDecimalNumber decimalNumberWithString:dictionary[@"DisPlz"]];
 
 	self.city = dictionary[@"DisOrt"];
 	self.street = dictionary[@"DisStrasse"];
@@ -27,7 +27,8 @@
 	self.photoUrl = [NSURL URLWithString:dictionary[@"DisFotoUrl"]];
 
 	NSNumberFormatter *nf = [NSNumberFormatter new];
-	nf.numberStyle = NSNumberFormatterDecimalStyle;
+	nf.numberStyle = NSNumberFormatterNoStyle;
+	nf.decimalSeparator = @".";
 
 	self.locLatitude = [[nf numberFromString:dictionary[@"DisLatitude"]] doubleValue];
 	self.locLongitude = [[nf numberFromString:dictionary[@"DisLongitude"]] doubleValue];

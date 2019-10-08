@@ -587,7 +587,7 @@
 			baseConfigurationReference = 1F9CFC8F6AD8EB358FA6D2F3 /* Pods-Emakina-SelfTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TD73N3AVL7;
 				INFOPLIST_FILE = "Emikana-SelfTest/Info.plist";
@@ -598,7 +598,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emakina-SelfTest";
 				PRODUCT_NAME = "Emakina Offices";
-				PROVISIONING_PROFILE_SPECIFIER = "skyisthelimit.aero Ad Hoc Builds";
+				PROVISIONING_PROFILE_SPECIFIER = "General Development";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -608,7 +608,7 @@
 			baseConfigurationReference = 41EBD2A74D99E1E8F452FE96 /* Pods-Emakina-SelfTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TD73N3AVL7;
 				INFOPLIST_FILE = "Emikana-SelfTest/Info.plist";
@@ -619,7 +619,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "aero.skyisthelimit.Emakina-SelfTest";
 				PRODUCT_NAME = "Emakina Offices";
-				PROVISIONING_PROFILE_SPECIFIER = "skyisthelimit.aero Ad Hoc Builds";
+				PROVISIONING_PROFILE_SPECIFIER = "General Development";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

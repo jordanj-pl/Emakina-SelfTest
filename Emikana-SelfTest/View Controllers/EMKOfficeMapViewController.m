@@ -27,7 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -60,8 +59,6 @@
 
 	MKCoordinateRegion regionToDisplay = MKCoordinateRegionMakeWithDistance(officeLoc, 5000, 5000);
 	self.mapView.region = regionToDisplay;
-
-//	self.view.layer.borderWidth
 }
 
 @end
