@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *openingHours;
 @property (nullable, nonatomic, copy) NSString *phone;
 @property (nullable, nonatomic, copy) NSURL *photoUrl;
+@property (nullable, nonatomic, copy) NSData *photoData;
 @property (nullable, nonatomic, copy) NSString *street;
 @property (nullable, nonatomic, copy) NSDecimalNumber *zip;
 

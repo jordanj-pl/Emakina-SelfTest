@@ -134,14 +134,14 @@
                                     <outlet property="detailsLabel" destination="759-Wf-bE3" id="QBe-Fq-4UY"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="image" id="5g9-Fq-Q0s">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="image" id="5g9-Fq-Q0s" customClass="EMKOfficeDetailsImageCell">
                                 <rect key="frame" x="0.0" y="146.5" width="414" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5g9-Fq-Q0s" id="nVJ-S0-mEU">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QTK-RD-u5i">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="broken_image_link" translatesAutoresizingMaskIntoConstraints="NO" id="QTK-RD-u5i">
                                             <rect key="frame" x="30" y="16" width="354" height="128"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="128" id="4Wk-2d-hib"/>
@@ -155,6 +155,9 @@
                                         <constraint firstItem="QTK-RD-u5i" firstAttribute="top" secondItem="nVJ-S0-mEU" secondAttribute="topMargin" constant="5" id="bWX-oC-j4z"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imageView" destination="QTK-RD-u5i" id="Vl0-rZ-qeD"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="button" id="zzT-NP-jl8">
                                 <rect key="frame" x="0.0" y="306.5" width="414" height="53"/>
@@ -259,4 +262,7 @@
             <point key="canvasLocation" x="-817" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="broken_image_link" width="512" height="512"/>
+    </resources>
 </document>

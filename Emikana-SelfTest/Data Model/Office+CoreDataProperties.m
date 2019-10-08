@@ -22,6 +22,7 @@
 @dynamic openingHours;
 @dynamic phone;
 @dynamic photoUrl;
+@dynamic photoData;
 @dynamic street;
 @dynamic zip;
 

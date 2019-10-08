@@ -18,22 +18,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-	_dataSyncManager = [EMKDataSyncManager new];
-	[_dataSyncManager syncWithCompletionHandler:^(bool success) {
-		if(success) {
-			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+	__weak typeof(self) weakSelf = self;
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+		typeof(self) strongSelf = weakSelf;
+		strongSelf->_dataSyncManager = [EMKDataSyncManager new];
+		[strongSelf->_dataSyncManager syncWithCompletionHandler:^(bool success) {
+			if(success) {
+				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 
-				UIApplication *app = [UIApplication sharedApplication];
-				UINavigationController *nc = (UINavigationController*)app.keyWindow.rootViewController;
+					UIApplication *app = [UIApplication sharedApplication];
+					UINavigationController *nc = (UINavigationController*)app.keyWindow.rootViewController;
 
-				UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-				UIViewController *rootVC = [sb instantiateViewControllerWithIdentifier:@"OfficesTable"];
+					UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+					UIViewController *rootVC = [sb instantiateViewControllerWithIdentifier:@"OfficesTable"];
 
-				[nc setViewControllers:@[rootVC] animated:YES];
-			});
-		}
-	}];
-
+					[nc setViewControllers:@[rootVC] animated:YES];
+				});
+			}
+		}];
+	});
 
 	return YES;
 }

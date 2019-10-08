@@ -8,11 +8,12 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="openingHours" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="photoData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="photoUrl" optional="YES" attributeType="URI"/>
         <attribute name="street" optional="YES" attributeType="String"/>
         <attribute name="zip" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
     </entity>
     <elements>
-        <element name="Office" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="Office" positionX="-63" positionY="-18" width="128" height="208"/>
     </elements>
 </model>

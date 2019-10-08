@@ -29,7 +29,7 @@
 		typeof(self) strongSelf = weakSelf;
 
 		strongSelf.statusLabel.text = note.userInfo[@"status"];
-		strongSelf.progressView.progress = [note.userInfo[@"progress"] floatValue];
+		[strongSelf.progressView setProgress:[note.userInfo[@"progress"] floatValue] animated:YES];
 	}];
 }
 

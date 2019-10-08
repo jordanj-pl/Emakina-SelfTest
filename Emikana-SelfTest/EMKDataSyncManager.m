@@ -29,6 +29,10 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 @property (nonatomic, strong) NSOperationQueue *syncOfficesQueue;
 @property (nonatomic, strong) NSURLSession *urlSession;
 
+//these two properties are to be used for visual progress calculation only. They are not ccurate to use them for app logic.
+@property (nonatomic, assign) double progress;
+@property (nonatomic, assign) double imagesToDownload;
+@property (nonatomic, assign) int imagesDownloaded;
 
 @end
 
@@ -54,11 +58,15 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 
 -(void)syncWithCompletionHandler:(void (^)(bool))completion {
 
+	self.progress = 0.0;
+	self.imagesToDownload = 0;
+	self.imagesDownloaded = 0;
+
 	if(!self.reachability.isReachable) {
 		NSLog(@"Sync server is offline");
 		[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-			@"status": @"Offline.",
-			@"progress": @(0.0)
+			@"status": @"Offline. Sync skipped.",
+			@"progress": @(self.progress)
 		}];
 		return;
 	}
@@ -78,15 +86,32 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 
 		[strongSelf syncWithDatabase:utf8Data etag: etag];
 //TODO Add error handling
-		completion(YES);
+
 	}];
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
 		@"status": @"Syncing with server...",
-		@"progress": @(0.0)
+		@"progress": @(self.progress)
 	}];
 
 	[dataTask resume];
+
+	//Waits until all images are downloaded.
+	[self.syncOfficesQueue waitUntilAllOperationsAreFinished];
+
+	__block EMKCoreDataHelper *cdh;
+	dispatch_sync(dispatch_get_main_queue(), ^{
+		cdh = ((AppDelegate*)[UIApplication sharedApplication].delegate).coreDataHelper;
+	});
+
+	[cdh backgroundSaveContext];
+
+	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+		@"status": @"Update completed.",
+		@"progress": @(1.0)
+	}];
+
+	completion(YES);
 }
 
 -(bool)syncWithDatabase:(NSData*)data etag:(NSString*)etag {
@@ -117,7 +142,7 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 
 		[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
 			@"status": @"Invalid server response.",
-			@"progress": @(0.0)
+			@"progress": @(self.progress)
 		}];
 
 		return NO;
@@ -129,15 +154,16 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 
 		[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
 			@"status": @"Invalid server response.",
-			@"progress": @(0.0)
+			@"progress": @(self.progress)
 		}];
 
 		return NO;
 	}
 
+	self.progress = 0.25;
 	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
 		@"status": @"Updating database...",
-		@"progress": @(0.5)
+		@"progress": @(self.progress)
 	}];
 
 	__weak typeof(self) weakSelf = self;
@@ -147,38 +173,59 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
 		[cdh.importContext performBlockAndWait:^{
 			typeof(self) strongSelf = weakSelf;
 
-			Office *office = (Office*)[strongSelf insertUniqueObjectInTargetEntity:@"Office" uniqueAttributeKey:@"identifier" uniqueAttributeValue:officeProperties[@"DisId"] inContext:cdh.importContext];
+			Office *office = (Office*)[strongSelf insertUniqueObjectInTargetEntity:@"Office" uniqueAttributeKey:@"identifier" uniqueAttributeValue:officeProperties[@"DisKz"] inContext:cdh.importContext];
 
 			[office setValuesForKeysWithDictionary:officeProperties];
 
 			[strongSelf saveContext:cdh.importContext];
+
+			[strongSelf downloadPhotoDataForOfficeWithId:office.objectID andURL:office.photoUrl inContext:cdh.importContext];
 		}];
 
 		currentObject++;
 
+		self.progress += 0.25 * (double)currentObject / (double)numberOfOffices;// It is assumed that downloading data from server takes quarter of the time, and processing db update takes another half.
+
 		//Updating UI after each DB entry is not necessary.
 		if(currentObject % 10 == 0) {
-			double progress = (double)currentObject / (double)numberOfOffices;
-			progress = progress*0.5 + 0.5;// It is assumed that downloading data from server takes half of the time, and processing db update takes another half.
 
 			[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
 				@"status": @"Updating database...",
-				@"progress": @(progress)
+				@"progress": @(self.progress)
 			}];
 		}
 
 	}
 
-	[cdh backgroundSaveContext];
-
+	//TODO Save context to persistent storage synchronously and update etag when saving success.
 	[cdh saveLastSyncEtag:etag];
 
-	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-		@"status": @"Update completed.",
-		@"progress": @(1.0)
-	}];
-
 	return YES;
+}
+
+-(void)downloadPhotoDataForOfficeWithId:(NSManagedObjectID*)objectId andURL:(NSURL*)url inContext:(NSManagedObjectContext*)context {
+
+	__weak typeof(self) weakSelf = self;
+
+	NSURLSessionDataTask *downloadTask = [self.urlSession dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+
+		typeof(self) strongSelf = weakSelf;
+
+		if(((NSHTTPURLResponse*)response).statusCode == 200) {
+			[strongSelf updatePhotoData:data forObjectWithId:objectId inContext:context];
+		}
+
+		self.imagesDownloaded += 1;
+		self.progress = 0.5 * 1/self.imagesToDownload;
+		if(strongSelf.imagesDownloaded % 10 == 0) {
+			[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
+				@"status": @"Updating database...",
+				@"progress": @(self.progress)
+			}];
+		}
+
+	}];
+	[downloadTask resume];
 }
 
 #pragma mark - CoreData methods
@@ -222,6 +269,23 @@ NSString *kOfficesEndpoint = @"Finanzamtsliste.json";
         NSLog(@"Skipped %@ object creation: unique attribute value is 0 length", entity);
         return nil;
     }
+}
+
+-(void)updatePhotoData:(NSData*)data forObjectWithId:(NSManagedObjectID*)objectId inContext:(NSManagedObjectContext*)context {
+
+	__weak typeof(self) weakSelf = self;
+
+	[context performBlockAndWait:^{
+		typeof(self) strongSelf = weakSelf;
+
+		Office *office = [context objectWithID:objectId];
+
+		if(office) {
+			office.photoData = data;
+			[strongSelf saveContext:context];
+		}
+	}];
+
 }
 
 -(void)saveContext:(NSManagedObjectContext*)context {

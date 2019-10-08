@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+@import UIKit;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Office : NSManagedObject
 
 -(void)setValuesForKeysWithDictionary:(NSDictionary*)dictionary;
+-(UIImage*)photo;
 
 @end
 

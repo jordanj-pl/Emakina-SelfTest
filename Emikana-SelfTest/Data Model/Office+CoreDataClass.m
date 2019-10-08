@@ -33,4 +33,8 @@
 	self.locLongitude = [[nf numberFromString:dictionary[@"DisLongitude"]] doubleValue];
 }
 
+-(UIImage*)photo {
+	return [UIImage imageWithData:self.photoData];
+}
+
 @end

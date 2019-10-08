@@ -93,7 +93,10 @@
 
 -(UITableViewCell*)imageCellForTableView:(UITableView*)tableView {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image"];
-//TODO add image handling
+
+	if(self.office.photo) {
+		cell.imageView.image = self.office.photo;
+	}
 
     return cell;
 }
