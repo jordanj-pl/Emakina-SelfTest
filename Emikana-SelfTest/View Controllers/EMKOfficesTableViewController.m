@@ -29,10 +29,9 @@
 
     EMKCoreDataHelper *cdh = ((AppDelegate*)[UIApplication sharedApplication].delegate).coreDataHelper;
 
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Office"];
+    NSFetchRequest *request = [cdh.model fetchRequestTemplateForName:@"AllOffices"].copy;
     request.sortDescriptors = [NSArray arrayWithObjects:
                                [NSSortDescriptor sortDescriptorWithKey:@"zip" ascending:YES],nil];
-    [request setFetchBatchSize:15];
 
     self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                         managedObjectContext:cdh.context

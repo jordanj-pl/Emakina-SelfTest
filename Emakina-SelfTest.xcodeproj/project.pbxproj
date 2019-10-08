@@ -179,10 +179,10 @@
 			children = (
 				17395C3F2347B3CE00A181A2 /* EMKOfficesTableViewController.h */,
 				17395C402347B3CE00A181A2 /* EMKOfficesTableViewController.m */,
-				17395C5F234B9D1100A181A2 /* EMKSyncViewController.h */,
-				17395C60234B9D1100A181A2 /* EMKSyncViewController.m */,
 				17395C65234BBDBD00A181A2 /* EMKOfficeDetailsTableViewController.h */,
 				17395C66234BBDBD00A181A2 /* EMKOfficeDetailsTableViewController.m */,
+				17395C5F234B9D1100A181A2 /* EMKSyncViewController.h */,
+				17395C60234B9D1100A181A2 /* EMKSyncViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
