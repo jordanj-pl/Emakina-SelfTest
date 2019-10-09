@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSData *photoData;
 @property (nullable, nonatomic, copy) NSString *street;
 @property (nullable, nonatomic, copy) NSDecimalNumber *zip;
+@property (nullable, nonatomic, copy) NSDate *lastUpdated;
 
 @end
 

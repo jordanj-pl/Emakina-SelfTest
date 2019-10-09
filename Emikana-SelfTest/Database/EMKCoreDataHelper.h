@@ -19,12 +19,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSPersistentStoreCoordinator *coordinator;
 @property (nonatomic, readonly) NSPersistentStore *store;
 
--(void)setupCoreData;
--(void)saveContext;
--(void)backgroundSaveContext;
+-(instancetype)initWithStoreURL:(NSURL*)storeURL NS_DESIGNATED_INITIALIZER;
 
--(NSString*)lastSyncEtag;
--(void)saveLastSyncEtag:(NSString *_Nonnull)etag;
+-(void)loadDatabase;
+-(BOOL)isMigrationNecessary;
+-(void)migrateStoreWithCompletion:(void(^)(BOOL))completionHandler progressHandler:(void(^)(float progress))progressHanlder;
+
+-(void)saveContext;
+-(void)saveParentContext;
+
+-(NSDictionary*)storeMetadata;
+-(void)saveStoreMetadata:(NSDictionary*)metadata;
 
 @end
 

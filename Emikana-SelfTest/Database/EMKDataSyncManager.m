@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 
 #import "EMKApiManager.h"
+#import "EMKDatabaseManager.h"
 
 #import "Office+CoreDataClass.h"
 #import "Office+CoreDataProperties.h"
@@ -24,8 +25,9 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 
 @interface EMKDataSyncManager ()
 
-@property (nonatomic, strong) EMKApiManager *apiManager;
-@property (nonatomic, strong) NSOperationQueue *syncOfficesQueue;
+@property (nonatomic, strong, readonly) EMKDatabaseManager *dbManager;
+@property (nonatomic, strong, readonly) EMKApiManager *apiManager;
+@property (nonatomic, strong, readonly) NSOperationQueue *syncOfficesQueue;
 
 //these two properties are to be used for visual progress calculation only. They are not ccurate to use them for app logic.
 @property (nonatomic, assign) double progress;
@@ -36,17 +38,29 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 
 @implementation EMKDataSyncManager
 
--(instancetype)init {
+-(instancetype)initWithDatabaseManager:(EMKDatabaseManager*)dbManager {
 	self = [super init];
-	if(self) {
-
-		self.syncOfficesQueue = [NSOperationQueue new];
-		self.syncOfficesQueue.name = kOfficesRetrieveQueue;
-
-		_apiManager = [[EMKApiManager alloc] initWithQueue:self.syncOfficesQueue];
+	if(!self) {
+		return nil;
 	}
+
+	_dbManager = dbManager;
+
+	_syncOfficesQueue = [NSOperationQueue new];
+	_syncOfficesQueue.name = kOfficesRetrieveQueue;
+
+	_apiManager = [[EMKApiManager alloc] initWithQueue:self.syncOfficesQueue];
+
 	return self;
 }
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+-(instancetype)init {
+	@throw [NSException exceptionWithName:@"Designated initializer required" reason:@"Use initWithDatabaseManager: instead." userInfo:nil];
+	return nil;
+}
+#pragma clang diagnostic pop
 
 -(void)syncWithCompletionHandler:(void (^)(bool))completion {
 
@@ -69,11 +83,6 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 		@"progress": @(self.progress)
 	}];
 
-	__block EMKCoreDataHelper *cdh;
-	dispatch_sync(dispatch_get_main_queue(), ^{
-		cdh = ((AppDelegate*)[UIApplication sharedApplication].delegate).coreDataHelper;
-	});
-
 	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
 	__weak typeof(self) weakSelf = self;
@@ -81,7 +90,7 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 
 		typeof(self) strongSelf = weakSelf;
 
-		if([cdh.lastSyncEtag isEqualToString:Etag]) {
+		if([strongSelf.dbManager.lastSyncEtag isEqualToString:Etag]) {
 			NSLog(@"Syncing skipped. Etag is the same.");
 			[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
 				@"status": @"Database is up to date."
@@ -108,7 +117,7 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 	//Waits until all images are downloaded.
 	[self.syncOfficesQueue waitUntilAllOperationsAreFinished];
 
-	[cdh backgroundSaveContext];
+	[self.dbManager saveToPersistentStore];
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
 		@"status": @"Update completed.",
@@ -122,34 +131,20 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 	NSLog(@"QUEUE: %@", [NSOperationQueue currentQueue]);
 	NSLog(@"Etag: %@", etag);
 
-	__block EMKCoreDataHelper *cdh;
-	dispatch_sync(dispatch_get_main_queue(), ^{
-		cdh = ((AppDelegate*)[UIApplication sharedApplication].delegate).coreDataHelper;
-	});
-
-
 	self.progress = 0.25;
 	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
 		@"status": @"Updating database...",
 		@"progress": @(self.progress)
 	}];
 
-	__weak typeof(self) weakSelf = self;
 	NSUInteger numberOfOffices = [offices count];
 	NSUInteger currentObject = 0;
 	self.imagesToDownload = numberOfOffices;
 	for (NSDictionary *officeProperties in offices) {
-		[cdh.importContext performBlockAndWait:^{
-			typeof(self) strongSelf = weakSelf;
 
-			Office *office = (Office*)[strongSelf insertUniqueObjectInTargetEntity:@"Office" uniqueAttributeKey:@"identifier" uniqueAttributeValue:officeProperties[@"DisKz"] inContext:cdh.importContext];
+		Office *office = (Office*)[self.dbManager insertUniqueObjectInTargetEntity:@"Office" uniqueAttributeKey:@"identifier" uniqueAttributeValue:officeProperties[@"DisKz"] properties: officeProperties];
 
-			[office setValuesForKeysWithDictionary:officeProperties];
-
-			[strongSelf saveContext:cdh.importContext];
-
-			[strongSelf downloadPhotoDataForOfficeWithId:office.objectID andURL:office.photoUrl inContext:cdh.importContext];
-		}];
+		[self downloadPhotoDataForOfficeWithId:office.objectID andURL:office.photoUrl];
 
 		currentObject++;
 
@@ -167,19 +162,19 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 	}
 
 	//TODO Save context to persistent storage synchronously and update etag when saving success.
-	[cdh saveLastSyncEtag:etag];
+	[self.dbManager saveLastSyncEtag:etag];
 
 	return YES;
 }
 
--(void)downloadPhotoDataForOfficeWithId:(NSManagedObjectID*)objectId andURL:(NSURL*)url inContext:(NSManagedObjectContext*)context {
+-(void)downloadPhotoDataForOfficeWithId:(NSManagedObjectID*)objectId andURL:(NSURL*)url {
 
 	__weak typeof(self) weakSelf = self;
 
 	[self.apiManager retrieveDataFromURL:url completionHandler:^(NSData * _Nonnull imgData) {
 		typeof(self) strongSelf = weakSelf;
 
-		[strongSelf updatePhotoData:imgData forObjectWithId:objectId inContext:context];
+		[strongSelf.dbManager updatePhotoData:imgData forObjectWithId:objectId];
 
 		strongSelf.imagesDownloaded += 1;
 		strongSelf.progress += (0.5 * 1/strongSelf.imagesToDownload);
@@ -190,87 +185,9 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 			}];
 		}
 
-
 	} error:^(NSError * _Nonnull error) {
 		NSLog(@"Img cannot be retrieved: %@", error);
 	}];
-}
-
-#pragma mark - CoreData methods
-
--(NSManagedObject*)existingObjectInContext:(NSManagedObjectContext*)context forEntiry:(NSString*)entity withUniqueAttributeKey:(NSString*)uniqueAttributeKey andValue:(NSString*)uniqueAttributeValue {
-
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K==%@", uniqueAttributeKey, uniqueAttributeValue];
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:entity];
-    fetchRequest.predicate = predicate;
-    fetchRequest.fetchLimit = 1;
-
-    NSError *error = nil;
-    NSArray *fetchRequestResults = [context executeFetchRequest:fetchRequest error:&error];
-
-    if(!fetchRequestResults) {
-        NSLog(@"Error: %@", error.localizedDescription);
-    }
-
-    if(fetchRequestResults.count == 0) {
-        return nil;
-    }
-
-    return fetchRequestResults.lastObject;
-}
-
--(NSManagedObject*)insertUniqueObjectInTargetEntity:(NSString *)entity uniqueAttributeKey:(NSString *)uniqueAttributeKey uniqueAttributeValue:(NSString *)uniqueAttributeValue inContext:(NSManagedObjectContext *)context {
-
-    if(uniqueAttributeValue.length > 0) {
-        NSManagedObject *existingObject = [self existingObjectInContext:context
-                                                              forEntiry:entity
-                                               withUniqueAttributeKey:uniqueAttributeKey
-                                               andValue: uniqueAttributeValue];
-
-        if(existingObject) {
-            return existingObject;
-        } else {
-            NSManagedObject *newObject = [NSEntityDescription insertNewObjectForEntityForName:entity inManagedObjectContext:context];
-            return newObject;
-        }
-    } else {
-        NSLog(@"Skipped %@ object creation: unique attribute value is 0 length", entity);
-        return nil;
-    }
-}
-
--(void)updatePhotoData:(NSData*)data forObjectWithId:(NSManagedObjectID*)objectId inContext:(NSManagedObjectContext*)context {
-
-	__weak typeof(self) weakSelf = self;
-
-	[context performBlockAndWait:^{
-		typeof(self) strongSelf = weakSelf;
-
-		Office *office = [context objectWithID:objectId];
-
-		if(office) {
-			office.photoData = data;
-			[strongSelf saveContext:context];
-		}
-	}];
-
-}
-
--(void)saveContext:(NSManagedObjectContext*)context {
-
-    [context performBlockAndWait:^{
-        if(context.hasChanges) {
-            NSError *error = nil;
-
-            if([context save:&error]) {
-                NSLog(@"CoreDataImporter SAVED changes from import context to parent context");
-            } else {
-                NSLog(@"CoreDataImporter FAILED to save changes from import context to parent context: %@", error);
-            }
-        } else {
-            NSLog(@"CoreDataImporter SKIPPED saving context as there are no changes");
-        }
-    }];
 }
 
 @end

@@ -8,20 +8,51 @@
 
 #import "AppDelegate.h"
 
+#import "EMKDataSyncManager.h"
+#import "EMKDatabaseMigrationManager.h"
+
 @interface AppDelegate ()
+
+@property (nonatomic, strong, readonly) EMKDataSyncManager *dataSyncManager;
 
 @end
 
 @implementation AppDelegate
 
-@synthesize coreDataHelper = _coreDataHelper;
+@synthesize dbManager = _dbManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+	dispatch_semaphore_t migrationSemaphore = dispatch_semaphore_create(0);
+
+	if(self.dbManager.isMigrationNeeded) {
+		NSLog(@"PERFORM MIGRATION");
+
+		__weak typeof(self) weakSelf = self;
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+			typeof(self) strongSelf = weakSelf;
+
+			EMKDatabaseMigrationManager *migrationManager = [[EMKDatabaseMigrationManager alloc] initWithDatabaseManager:strongSelf.dbManager];
+			[migrationManager migrateDatabaseWithCompletion:^(BOOL completed) {
+				NSLog(@"Migration completed: %d", completed);
+				[strongSelf.dbManager loadDatabase];
+				dispatch_semaphore_signal(migrationSemaphore);
+			} progressHandler:^(float progress) {
+				NSLog(@"Migration progress: %f", progress);
+			}];
+		});
+	} else {
+		[self.dbManager loadDatabase];
+		dispatch_semaphore_signal(migrationSemaphore);
+	}
 
 	__weak typeof(self) weakSelf = self;
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 		typeof(self) strongSelf = weakSelf;
-		strongSelf->_dataSyncManager = [EMKDataSyncManager new];
+
+		dispatch_semaphore_wait(migrationSemaphore, DISPATCH_TIME_FOREVER);
+
+		strongSelf->_dataSyncManager = [[EMKDataSyncManager alloc] initWithDatabaseManager:strongSelf.dbManager];
 		[strongSelf->_dataSyncManager syncWithCompletionHandler:^(bool success) {
 
 			double waitUntilMainScreen = 0.7;
@@ -47,26 +78,24 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [self.coreDataHelper backgroundSaveContext];
+    [self.dbManager saveToPersistentStoreAsync];
 }
 
 -(void)applicationWillTerminate:(UIApplication *)application {
-	[self.coreDataHelper backgroundSaveContext];
+	[self.dbManager saveToPersistentStoreAsync];
 }
 
 #pragma mark - Core Data
 
--(EMKCoreDataHelper*)coreDataHelper {
-    if(!_coreDataHelper) {
+-(EMKDatabaseManager*)dbManager {
+    if(!_dbManager) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            _coreDataHelper = [EMKCoreDataHelper new];
+            _dbManager = [EMKDatabaseManager new];
         });
-
-        [_coreDataHelper setupCoreData];
     }
 
-    return _coreDataHelper;
+    return _dbManager;
 }
 
 @end

@@ -11,7 +11,7 @@
 @import CoreData;
 
 #import "AppDelegate.h"
-#import "EMKCoreDataHelper.h"
+#import "EMKDatabaseManager.h"
 #import "Office+CoreDataProperties.h"
 #import "EMKOfficeTableViewCell.h"
 #import "EMKOfficeDetailsTableViewController.h"
@@ -27,16 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    EMKCoreDataHelper *cdh = ((AppDelegate*)[UIApplication sharedApplication].delegate).coreDataHelper;
+    EMKDatabaseManager *dbManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).dbManager;
 
-    NSFetchRequest *request = [cdh.model fetchRequestTemplateForName:@"AllOffices"].copy;
-    request.sortDescriptors = [NSArray arrayWithObjects:
-                               [NSSortDescriptor sortDescriptorWithKey:@"zip" ascending:YES],nil];
-
-    self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                        managedObjectContext:cdh.context
-                                          sectionNameKeyPath:nil
-                                                   cacheName:nil];
+	self.frc = dbManager.allOffices;
     self.frc.delegate = self;
 
 	[self.frc.managedObjectContext performBlockAndWait:^{

@@ -25,5 +25,6 @@
 @dynamic photoData;
 @dynamic street;
 @dynamic zip;
+@dynamic lastUpdated;
 
 @end

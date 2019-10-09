@@ -12,7 +12,7 @@
 @import Contacts;
 
 #import "AppDelegate.h"
-#import "EMKCoreDataHelper.h"
+#import "EMKDatabaseManager.h"
 #import "Office+CoreDataProperties.h"
 
 @interface EMKOfficeMapViewController ()
@@ -32,8 +32,8 @@
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
-	EMKCoreDataHelper *cdh = ((AppDelegate*)[UIApplication sharedApplication].delegate).coreDataHelper;
-	self.office = (Office*)[cdh.context existingObjectWithID:self.officeID error:nil];
+	EMKDatabaseManager *dbManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).dbManager;
+	self.office = [dbManager officeByManagedObjectId:self.officeID];
 
 	[self setUpMapView];
 }
