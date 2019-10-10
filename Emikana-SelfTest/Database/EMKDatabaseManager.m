@@ -90,7 +90,7 @@
 
 		if(office) {
 			office.photoData = data;
-			[strongSelf saveContext:self.cdh.importContext];
+			[strongSelf saveContext:strongSelf.cdh.importContext];
 		}
 	}];
 }

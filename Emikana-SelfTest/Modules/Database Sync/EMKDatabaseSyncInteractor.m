@@ -75,26 +75,25 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 	}
 
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[self.output receiveStatus:@"Syncing with server..."];
+		[self.output receiveStatus:@"Looking for updates..."];
 	});
 
 	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+	__block BOOL dataNeedsReload = YES;
 
 	__weak typeof(self) weakSelf = self;
 	[self.apiManager retrieveListOfOfficesWithCompletionHandler:^(NSString * _Nonnull Etag, NSArray * _Nonnull offices) {
 
 		typeof(self) strongSelf = weakSelf;
 
-//		if([strongSelf.dbManager.lastSyncEtag isEqualToString:Etag]) {
-//			dispatch_async(dispatch_get_main_queue(), ^{
-//				[self.output receiveStatus:@"Database is up to date."];
-//				[self.output didCompleteWithSuccess:YES];
-//			});
-//			return;
-//		} else {
+		if([strongSelf.dbManager.lastSyncEtag isEqualToString:Etag]) {
+			dataNeedsReload = NO;
+		} else {
 			[strongSelf syncWithDatabase:offices etag: Etag];
-			dispatch_semaphore_signal(semaphore);
-//		}
+		}
+
+		dispatch_semaphore_signal(semaphore);
+
 	} error:^(NSError * _Nonnull error) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self.output receiveStatus: error.localizedFailureReason];
@@ -106,6 +105,14 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 	}];
 
 	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+	if(!dataNeedsReload) {
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self.output receiveStatus:@"Database is up to date."];
+			[self.output didCompleteWithSuccess:YES];
+		});
+		return;
+	}
 
 	//Waits until all images are downloaded.
 	[self.syncOfficesQueue waitUntilAllOperationsAreFinished];
