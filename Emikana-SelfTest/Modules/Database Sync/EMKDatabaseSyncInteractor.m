@@ -85,16 +85,16 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 
 		typeof(self) strongSelf = weakSelf;
 
-		if([strongSelf.dbManager.lastSyncEtag isEqualToString:Etag]) {
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[self.output receiveStatus:@"Database is up to date."];
-				[self.output didCompleteWithSuccess:YES];
-			});
-			return;
-		} else {
+//		if([strongSelf.dbManager.lastSyncEtag isEqualToString:Etag]) {
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				[self.output receiveStatus:@"Database is up to date."];
+//				[self.output didCompleteWithSuccess:YES];
+//			});
+//			return;
+//		} else {
 			[strongSelf syncWithDatabase:offices etag: Etag];
 			dispatch_semaphore_signal(semaphore);
-		}
+//		}
 	} error:^(NSError * _Nonnull error) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self.output receiveStatus: error.localizedFailureReason];
@@ -129,13 +129,15 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 		[self.output receiveProgress: self.progress];
 	});
 
+	//Reference sync date does not need to reflect accurate current date and time.
+	NSDate *referenceSyncDate = [NSDate date];
 
 	NSUInteger numberOfOffices = [offices count];
 	NSUInteger currentObject = 0;
 	self.imagesToDownload = numberOfOffices;
 	for (NSDictionary *officeProperties in offices) {
 
-		Office *office = (Office*)[self.dbManager insertUniqueObjectInTargetEntity:@"Office" uniqueAttributeKey:@"identifier" uniqueAttributeValue:officeProperties[@"DisKz"] properties: officeProperties];
+		Office *office = (Office*)[self.dbManager insertUniqueObjectInTargetEntity:@"Office" uniqueAttributeKey:@"identifier" uniqueAttributeValue:officeProperties[@"DisKz"] properties: officeProperties syncDate:referenceSyncDate];
 
 		[self downloadPhotoDataForOfficeWithId:office.objectID andURL:office.photoUrl];
 
@@ -152,6 +154,8 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 		}
 
 	}
+
+	[self.dbManager deleteObjectsOlderThan:referenceSyncDate];
 
 	//TODO Save context to persistent storage synchronously and update etag when saving success.
 	[self.dbManager saveLastSyncEtag:etag];

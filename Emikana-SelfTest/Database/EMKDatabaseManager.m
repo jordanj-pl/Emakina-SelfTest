@@ -97,7 +97,7 @@
 
 #pragma mark insert
 
--(NSManagedObject*)insertUniqueObjectInTargetEntity:(NSString *)entity uniqueAttributeKey:(NSString *)uniqueAttributeKey uniqueAttributeValue:(NSString *)uniqueAttributeValue properties:(NSDictionary*)properties {
+-(NSManagedObject*)insertUniqueObjectInTargetEntity:(NSString *)entity uniqueAttributeKey:(NSString *)uniqueAttributeKey uniqueAttributeValue:(NSString *)uniqueAttributeValue properties:(NSDictionary*)properties syncDate:(nonnull NSDate *)syncDate {
 
 	if(uniqueAttributeValue.length == 0) {
 		return nil;
@@ -122,6 +122,7 @@
 		}
 
 		[insertedObject setValuesForKeysWithDictionary:properties];
+		((Office*)insertedObject).lastUpdated = syncDate;
 
 		[strongSelf saveContext:self.cdh.importContext];
 	}];
@@ -129,6 +130,27 @@
 	return insertedObject;
 
 
+}
+
+#pragma mark delete
+
+-(void)deleteObjectsOlderThan:(NSDate*)lastSyncDate {
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lastUpdated < %@", lastSyncDate];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Office"];
+    fetchRequest.predicate = predicate;
+
+    NSError *error = nil;
+    NSArray *fetchRequestResults = [self.cdh.importContext executeFetchRequest:fetchRequest error:&error];
+
+
+	[self.cdh.importContext performBlockAndWait:^{
+		for (NSManagedObject *object in fetchRequestResults) {
+			[self.cdh.importContext deleteObject:object];
+		}
+	}];
+
+	[self saveContext:self.cdh.importContext];
 }
 
 #pragma mark - metadata

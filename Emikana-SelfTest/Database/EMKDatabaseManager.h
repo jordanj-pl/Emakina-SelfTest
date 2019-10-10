@@ -21,9 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSFetchedResultsController*)allOffices;
 -(Office*)officeByManagedObjectId:(NSManagedObjectID*)objectId;
 
--(NSManagedObject*)insertUniqueObjectInTargetEntity:(NSString *)entity uniqueAttributeKey:(NSString *)uniqueAttributeKey uniqueAttributeValue:(NSString *)uniqueAttributeValue properties:(NSDictionary*)properties;
+-(NSManagedObject*)insertUniqueObjectInTargetEntity:(NSString *)entity uniqueAttributeKey:(NSString *)uniqueAttributeKey uniqueAttributeValue:(NSString *)uniqueAttributeValue properties:(NSDictionary*)properties syncDate:(NSDate*)syncDate;
 
 -(void)updatePhotoData:(NSData*)data forObjectWithId:(NSManagedObjectID*)objectId;
+
+-(void)deleteObjectsOlderThan:(NSDate*)lastSyncDate;
 
 -(NSString*)lastSyncEtag;
 -(void)saveLastSyncEtag:(NSString *_Nonnull)etag;
