@@ -6,7 +6,7 @@
 //  Copyright © 2019 skyisthelimit.aero. All rights reserved.
 //
 
-#import "EMKDataSyncManager.h"
+#import "EMKDatabaseSyncInteractor.h"
 
 @import CoreData;
 
@@ -19,11 +19,9 @@
 #import "Office+CoreDataClass.h"
 #import "Office+CoreDataProperties.h"
 
-NSString *const kEMKDataSyncManagerProgressNotificationName = @"EMKDataSyncManagerProgressNotificationName";
+NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 
-NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
-
-@interface EMKDataSyncManager ()
+@interface EMKDatabaseSyncInteractor ()
 
 @property (nonatomic, strong, readonly) EMKDatabaseManager *dbManager;
 @property (nonatomic, strong, readonly) EMKApiManager *apiManager;
@@ -36,7 +34,7 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 
 @end
 
-@implementation EMKDataSyncManager
+@implementation EMKDatabaseSyncInteractor
 
 -(instancetype)initWithDatabaseManager:(EMKDatabaseManager*)dbManager {
 	self = [super init];
@@ -62,26 +60,23 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 }
 #pragma clang diagnostic pop
 
--(void)syncWithCompletionHandler:(void (^)(bool))completion {
+-(void)sync {
 
 	self.progress = 0.0;
 	self.imagesToDownload = 0;
 	self.imagesDownloaded = 0;
 
 	if(!self.apiManager.isServerReachable) {
-		NSLog(@"Sync server is offline");
-		[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-			@"status": @"Offline. Sync skipped.",
-			@"progress": @(self.progress)
-		}];
-		completion(NO);
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self.output receiveStatus:@"Offline. Sync skipped."];
+			[self.output didCompleteWithSuccess:NO];
+		});
 		return;
 	}
 
-	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-		@"status": @"Syncing with server...",
-		@"progress": @(self.progress)
-	}];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.output receiveStatus:@"Syncing with server..."];
+	});
 
 	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
@@ -91,24 +86,22 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 		typeof(self) strongSelf = weakSelf;
 
 		if([strongSelf.dbManager.lastSyncEtag isEqualToString:Etag]) {
-			NSLog(@"Syncing skipped. Etag is the same.");
-			[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-				@"status": @"Database is up to date."
-			}];
-
-			completion(YES);
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self.output receiveStatus:@"Database is up to date."];
+				[self.output didCompleteWithSuccess:YES];
+			});
 			return;
 		} else {
 			[strongSelf syncWithDatabase:offices etag: Etag];
 			dispatch_semaphore_signal(semaphore);
 		}
 	} error:^(NSError * _Nonnull error) {
-		[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-			@"status": error.localizedFailureReason,
-			@"progress": @(self.progress)
-		}];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self.output receiveStatus: error.localizedFailureReason];
+			[self.output receiveProgress: self.progress];
+			[self.output didCompleteWithSuccess: NO];
+		});
 
-		completion(NO);
 		return;
 	}];
 
@@ -119,12 +112,11 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 
 	[self.dbManager saveToPersistentStore];
 
-	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-		@"status": @"Update completed.",
-		@"progress": @(1.0)
-	}];
-
-	completion(YES);
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.output receiveStatus: @"Update completed."];
+		[self.output receiveProgress: 1.0];
+		[self.output didCompleteWithSuccess: YES];
+	});
 }
 
 -(bool)syncWithDatabase:(NSArray*)offices etag:(NSString*)etag {
@@ -132,10 +124,11 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 	NSLog(@"Etag: %@", etag);
 
 	self.progress = 0.25;
-	[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-		@"status": @"Updating database...",
-		@"progress": @(self.progress)
-	}];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.output receiveStatus: @"Updating database..."];
+		[self.output receiveProgress: self.progress];
+	});
+
 
 	NSUInteger numberOfOffices = [offices count];
 	NSUInteger currentObject = 0;
@@ -152,11 +145,10 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 
 		//Updating UI after each DB entry is not necessary.
 		if(currentObject % 10 == 0) {
-
-			[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-				@"status": @"Updating database...",
-				@"progress": @(self.progress)
-			}];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self.output receiveStatus: @"Updating database..."];
+				[self.output receiveProgress: self.progress];
+			});
 		}
 
 	}
@@ -179,10 +171,10 @@ NSString *kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
 		strongSelf.imagesDownloaded += 1;
 		strongSelf.progress += (0.5 * 1/strongSelf.imagesToDownload);
 		if(strongSelf.imagesDownloaded % 10 == 0) {
-			[[NSNotificationCenter defaultCenter] postNotificationName:kEMKDataSyncManagerProgressNotificationName object:nil userInfo:@{
-				@"status": @"Updating database...",
-				@"progress": @(strongSelf.progress)
-			}];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[strongSelf.output receiveStatus: @"Updating database..."];
+				[strongSelf.output receiveProgress: strongSelf.progress];
+			});
 		}
 
 	} error:^(NSError * _Nonnull error) {

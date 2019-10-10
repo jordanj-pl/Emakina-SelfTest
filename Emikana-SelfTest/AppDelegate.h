@@ -8,13 +8,16 @@
 
 @import UIKit;
 
-#import "EMKCoreDataHelper.h"
 #import "EMKDatabaseManager.h"
+
+@class EMKMainRouter;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong, readonly) EMKDatabaseManager *dbManager;
+
+//TODO It is only to preserv backward compatibility with non-VIPER modules. To be removed.
+@property (nonatomic, strong, readonly) EMKMainRouter *mainRouter;
 
 @end
 

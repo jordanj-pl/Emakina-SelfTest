@@ -8,15 +8,20 @@
 
 @import Foundation;
 
+#import "EMKDatabaseMigrationProvider.h"
+#import "EMKDatabaseMigrationOutput.h"
+
 @class EMKDatabaseManager;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMKDatabaseMigrationManager : NSObject
+@interface EMKDatabaseMigrationInteractor : NSObject<EMKDatabaseMigrationProvider>
+
+@property (nonatomic, strong) id<EMKDatabaseMigrationOutput> output;
 
 -(instancetype)initWithDatabaseManager:(EMKDatabaseManager*)dbManager NS_DESIGNATED_INITIALIZER;
 
--(void)migrateDatabaseWithCompletion:(void(^)(BOOL))completionHandler progressHandler:(void(^)(float progress))progressHanlder;
+-(void)migrateDatabase;
 
 @end
 

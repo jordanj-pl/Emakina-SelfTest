@@ -8,9 +8,14 @@
 
 @import UIKit;
 
+#import "EMKDatabaseSyncViewProtocol.h"
+#import "EMKDatabaseSyncEventHandler.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMKSyncViewController : UIViewController
+@interface EMKDatabaseSyncView : UIViewController<EMKDatabaseSyncView>
+
+@property (nonatomic, strong) id<EMKDatabaseSyncEventHandler> eventHandler;
 
 @end
 

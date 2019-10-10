@@ -8,17 +8,18 @@
 
 @import Foundation;
 
+#import "EMKDatabaseSyncProvider.h"
+#import "EMKDatabaseSyncOutput.h"
+
 @class EMKDatabaseManager;
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString *const kEMKDataSyncManagerProgressNotificationName;
+@interface EMKDatabaseSyncInteractor : NSObject<EMKDatabaseSyncProvider>
 
-@interface EMKDataSyncManager : NSObject
+@property (nonatomic, weak) id<EMKDatabaseSyncOutput> output;
 
 -(instancetype)initWithDatabaseManager:(EMKDatabaseManager*)dbManager NS_DESIGNATED_INITIALIZER;
-
--(void)syncWithCompletionHandler:(void (^)(bool))completion;
 
 @end
 

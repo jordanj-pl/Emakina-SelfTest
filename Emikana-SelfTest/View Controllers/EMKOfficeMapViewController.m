@@ -12,6 +12,8 @@
 @import Contacts;
 
 #import "AppDelegate.h"
+#import "EMKMainRouter.h"
+
 #import "EMKDatabaseManager.h"
 #import "Office+CoreDataProperties.h"
 
@@ -32,7 +34,7 @@
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
-	EMKDatabaseManager *dbManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).dbManager;
+	EMKDatabaseManager *dbManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).mainRouter.dbManager;
 	self.office = [dbManager officeByManagedObjectId:self.officeID];
 
 	[self setUpMapView];

@@ -11,6 +11,8 @@
 @import CoreData;
 
 #import "AppDelegate.h"
+#import "EMKMainRouter.h"
+
 #import "EMKDatabaseManager.h"
 #import "Office+CoreDataProperties.h"
 #import "EMKOfficeTableViewCell.h"
@@ -27,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    EMKDatabaseManager *dbManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).dbManager;
+    EMKDatabaseManager *dbManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).mainRouter.dbManager;
 
 	self.frc = dbManager.allOffices;
     self.frc.delegate = self;
