@@ -20,17 +20,24 @@
 #import "Office+CoreDataProperties.h"
 
 NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue";
+const char *kQueueRemainingImagesToDownload = "aero.skyisthelimit.EMKDatabaseSyncInteractor.remainingImagesToDownload";
 
-@interface EMKDatabaseSyncInteractor ()
+@interface EMKDatabaseSyncInteractor () {
+	int _remainingImagesToDownload;
+}
 
 @property (nonatomic, strong, readonly) EMKDatabaseManager *dbManager;
 @property (nonatomic, strong, readonly) EMKApiManager *apiManager;
 @property (nonatomic, strong, readonly) NSOperationQueue *syncOfficesQueue;
 
+@property (nonatomic, strong, readonly) dispatch_queue_t remainingImagesToDownloadQueue;
+
 //these two properties are to be used for visual progress calculation only. They are not ccurate to use them for app logic.
 @property (nonatomic, assign) double progress;
 @property (nonatomic, assign) double imagesToDownload;
 @property (nonatomic, assign) int imagesDownloaded;
+//This is thread safe so it can be used for logic
+@property (atomic, assign) int remainingImagesToDownload;
 
 @end
 
@@ -47,6 +54,8 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 	_syncOfficesQueue = [NSOperationQueue new];
 	_syncOfficesQueue.name = kOfficesRetrieveQueue;
 
+	_remainingImagesToDownloadQueue = dispatch_queue_create(kQueueRemainingImagesToDownload, NULL);
+
 	_apiManager = [[EMKApiManager alloc] initWithQueue:self.syncOfficesQueue];
 
 	return self;
@@ -59,6 +68,24 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 	return nil;
 }
 #pragma clang diagnostic pop
+
+#pragma mark setters/getters
+
+-(int)remainingImagesToDownload {
+	__block int result;
+	dispatch_sync(_remainingImagesToDownloadQueue, ^{
+		result = _remainingImagesToDownload;
+	});
+	return result;
+}
+
+-(void)setRemainingImagesToDownload:(int)remainingImagesToDownload {
+	dispatch_sync(_remainingImagesToDownloadQueue, ^{
+		_remainingImagesToDownload = remainingImagesToDownload;
+	});
+}
+
+#pragma mark - sync
 
 -(void)sync {
 
@@ -113,10 +140,9 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 		});
 		return;
 	}
+}
 
-	//Waits until all images are downloaded.
-	[self.syncOfficesQueue waitUntilAllOperationsAreFinished];
-
+-(void)completeSync {
 	[self.dbManager saveToPersistentStore];
 
 	dispatch_async(dispatch_get_main_queue(), ^{
@@ -142,6 +168,10 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 	NSUInteger numberOfOffices = [offices count];
 	NSUInteger currentObject = 0;
 	self.imagesToDownload = numberOfOffices;
+
+	self.remainingImagesToDownload = (int)numberOfOffices;
+	[self addObserver:self forKeyPath:@"remainingImagesToDownload" options:NSKeyValueObservingOptionNew context:nil];
+
 	for (NSDictionary *officeProperties in offices) {
 
 		Office *office = (Office*)[self.dbManager insertUniqueObjectInTargetEntity:@"Office" uniqueAttributeKey:@"identifier" uniqueAttributeValue:officeProperties[@"DisKz"] properties: officeProperties syncDate:referenceSyncDate];
@@ -172,12 +202,11 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 -(void)downloadPhotoDataForOfficeWithId:(NSManagedObjectID*)objectId andURL:(NSURL*)url {
 
 	__weak typeof(self) weakSelf = self;
-
 	[self.apiManager retrieveDataFromURL:url completionHandler:^(NSData * _Nonnull imgData) {
 		typeof(self) strongSelf = weakSelf;
 
 		[strongSelf.dbManager updatePhotoData:imgData forObjectWithId:objectId];
-
+		strongSelf.remainingImagesToDownload--;
 		strongSelf.imagesDownloaded += 1;
 		strongSelf.progress += (0.5 * 1/strongSelf.imagesToDownload);
 		if(strongSelf.imagesDownloaded % 10 == 0) {
@@ -189,7 +218,21 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 
 	} error:^(NSError * _Nonnull error) {
 		NSLog(@"Img cannot be retrieved: %@", error);
+		typeof(self) strongSelf = weakSelf;
+		strongSelf.remainingImagesToDownload--;
 	}];
+}
+
+#pragma mark Observers
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+
+	if([keyPath isEqualToString:@"remainingImagesToDownload"]) {
+		if([change[NSKeyValueChangeNewKey] intValue] == 0) {
+			[self completeSync];
+			[self removeObserver:self forKeyPath:@"remainingImagesToDownload"];
+		}
+	}
 }
 
 @end

@@ -90,12 +90,29 @@
 
 #pragma mark - SAVING
 
+-(void)saveImportContext {
+    if(_importContext.hasChanges) {
+        NSError *error = nil;
+
+        if([_importContext save:&error]) {
+            NSLog(@"_importContext saved changes to _context store.");
+        } else {
+			//TODO handle error
+            NSLog(@"FAILED to save _importContext: %@", error);
+        }
+    } else {
+        NSLog(@"SKIPPED _importContext save, there are no changes.");
+    }
+}
+
 -(void)saveContext {
+	[self saveImportContext];
+
     if(_context.hasChanges) {
         NSError *error = nil;
 
         if([_context save:&error]) {
-            NSLog(@"Context saved changes to persistent store.");
+            NSLog(@"_context saved changes to _parentContext store.");
         } else {
 			//TODO handle error
             NSLog(@"FAILED to save _context: %@", error);

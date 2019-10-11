@@ -85,9 +85,7 @@
 
 	[self.cdh.importContext performBlockAndWait:^{
 		typeof(self) strongSelf = weakSelf;
-
 		Office *office = [strongSelf.cdh.importContext objectWithID:objectId];
-
 		if(office) {
 			office.photoData = data;
 		}
@@ -168,12 +166,12 @@
             NSError *error = nil;
 
             if([context save:&error]) {
-                NSLog(@"CoreDataImporter SAVED changes from import context to parent context");
+                NSLog(@"EMKDatabaseManager SAVED changes from import context to parent context");
             } else {
-                NSLog(@"CoreDataImporter FAILED to save changes from import context to parent context: %@", error);
+                NSLog(@"EMKDatabaseManager FAILED to save changes from import context to parent context: %@", error);
             }
         } else {
-            NSLog(@"CoreDataImporter SKIPPED saving context as there are no changes");
+            NSLog(@"EMKDatabaseManager SKIPPED saving context as there are no changes");
         }
     }];
 }
