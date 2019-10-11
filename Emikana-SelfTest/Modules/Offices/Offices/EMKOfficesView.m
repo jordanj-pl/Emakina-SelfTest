@@ -6,7 +6,7 @@
 //  Copyright © 2019 skyisthelimit.aero. All rights reserved.
 //
 
-#import "EMKOfficesTableViewController.h"
+#import "EMKOfficesView.h"
 
 @import CoreData;
 
@@ -18,28 +18,26 @@
 #import "EMKOfficeTableViewCell.h"
 #import "EMKOfficeDetailsTableViewController.h"
 
-@interface EMKOfficesTableViewController ()<NSFetchedResultsControllerDelegate>
+@interface EMKOfficesView ()<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *frc;
 
 @end
 
-@implementation EMKOfficesTableViewController
+@implementation EMKOfficesView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    EMKDatabaseManager *dbManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).mainRouter.dbManager;
+    [self.eventHandler showOffices];
+}
 
-	self.frc = dbManager.allOffices;
-    self.frc.delegate = self;
+-(void)setFetchedResultsController:(NSFetchedResultsController *)frc {
+	NSLog(@"setFetchedResultsController");
+
+	self.frc = frc;
 
 	[self.frc.managedObjectContext performBlockAndWait:^{
-		NSError *error = nil;
-		if(![self.frc performFetch:&error]) {
-			NSLog(@"FAILED to perform fetch: %@", error);
-		}
-
 		[self.tableView reloadData];
 	}];
 }
@@ -69,23 +67,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-	Office *office = (Office*)[self.frc objectAtIndexPath:indexPath];
-
-    EMKOfficeDetailsTableViewController *officeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"officeDetails"];
-    officeVC.officeID = office.objectID;
-
-    [self.navigationController pushViewController:officeVC animated:YES];
+	[self.eventHandler didTapRowAtIndexPath:indexPath];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

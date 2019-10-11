@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)startDatabaseSync;
 -(void)startMainFlow;
 
+-(void)pushView:(id)view;
+-(void)popView;
+
 @end
 
 NS_ASSUME_NONNULL_END

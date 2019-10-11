@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170A013D23510AFB008A02B2 /* EMKOfficesRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 170A013C23510AFB008A02B2 /* EMKOfficesRouter.m */; };
+		171B79C1235119EE00B5F2C7 /* EMKOfficesPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 171B79C0235119EE00B5F2C7 /* EMKOfficesPresenter.m */; };
+		171B79C423511D4900B5F2C7 /* EMKOfficesInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 171B79C323511D4900B5F2C7 /* EMKOfficesInteractor.m */; };
 		17395C1A2347AA0E00A181A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C192347AA0E00A181A2 /* AppDelegate.m */; };
 		17395C232347AA0E00A181A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17395C212347AA0E00A181A2 /* Main.storyboard */; };
 		17395C252347AA0F00A181A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17395C242347AA0F00A181A2 /* Assets.xcassets */; };
 		17395C282347AA0F00A181A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17395C262347AA0F00A181A2 /* LaunchScreen.storyboard */; };
 		17395C2B2347AA0F00A181A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C2A2347AA0F00A181A2 /* main.m */; };
 		17395C352347AA0F00A181A2 /* Emikana_SelfTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C342347AA0F00A181A2 /* Emikana_SelfTestTests.m */; };
-		17395C412347B3CE00A181A2 /* EMKOfficesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C402347B3CE00A181A2 /* EMKOfficesTableViewController.m */; };
+		17395C412347B3CE00A181A2 /* EMKOfficesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C402347B3CE00A181A2 /* EMKOfficesView.m */; };
 		17395C432347B57500A181A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17395C422347B57500A181A2 /* SystemConfiguration.framework */; };
 		17395C462347B99A00A181A2 /* EMKDatabaseSyncInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C452347B99A00A181A2 /* EMKDatabaseSyncInteractor.m */; };
 		17395C482347BA3200A181A2 /* EMKConstans.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C472347BA3200A181A2 /* EMKConstans.m */; };
@@ -54,6 +57,18 @@
 		109DD9D70C2E8BEBDC0C9258 /* Pods_Emakina_SelfTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emakina_SelfTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		170A0137234EB1FB008A02B2 /* EMKDatabaseSyncOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKDatabaseSyncOutput.h; sourceTree = "<group>"; };
 		170A0138234EB312008A02B2 /* EMKDatabaseSyncProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKDatabaseSyncProvider.h; sourceTree = "<group>"; };
+		170A013A23510AA5008A02B2 /* EMKRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKRouter.h; sourceTree = "<group>"; };
+		170A013B23510AFB008A02B2 /* EMKOfficesRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesRouter.h; sourceTree = "<group>"; };
+		170A013C23510AFB008A02B2 /* EMKOfficesRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficesRouter.m; sourceTree = "<group>"; };
+		171B79BD235117F200B5F2C7 /* EMKOfficesViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesViewProtocol.h; sourceTree = "<group>"; };
+		171B79BE2351188700B5F2C7 /* EMKOfficesViewEventHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesViewEventHandler.h; sourceTree = "<group>"; };
+		171B79BF235119EE00B5F2C7 /* EMKOfficesPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesPresenter.h; sourceTree = "<group>"; };
+		171B79C0235119EE00B5F2C7 /* EMKOfficesPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficesPresenter.m; sourceTree = "<group>"; };
+		171B79C223511D4900B5F2C7 /* EMKOfficesInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesInteractor.h; sourceTree = "<group>"; };
+		171B79C323511D4900B5F2C7 /* EMKOfficesInteractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficesInteractor.m; sourceTree = "<group>"; };
+		171B79C523511D7900B5F2C7 /* EMKOfficesProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesProvider.h; sourceTree = "<group>"; };
+		171B79C623511E8F00B5F2C7 /* EMKOfficesOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesOutput.h; sourceTree = "<group>"; };
+		171B79C7235137D200B5F2C7 /* EMKOfficesRouterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesRouterProtocol.h; sourceTree = "<group>"; };
 		17395C152347AA0E00A181A2 /* Emakina Offices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Emakina Offices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17395C182347AA0E00A181A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		17395C192347AA0E00A181A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -65,8 +80,8 @@
 		17395C302347AA0F00A181A2 /* Emakina-SelfTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Emakina-SelfTestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17395C342347AA0F00A181A2 /* Emikana_SelfTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Emikana_SelfTestTests.m; sourceTree = "<group>"; };
 		17395C362347AA0F00A181A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17395C3F2347B3CE00A181A2 /* EMKOfficesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesTableViewController.h; sourceTree = "<group>"; };
-		17395C402347B3CE00A181A2 /* EMKOfficesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficesTableViewController.m; sourceTree = "<group>"; };
+		17395C3F2347B3CE00A181A2 /* EMKOfficesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficesView.h; sourceTree = "<group>"; };
+		17395C402347B3CE00A181A2 /* EMKOfficesView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficesView.m; sourceTree = "<group>"; };
 		17395C422347B57500A181A2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		17395C442347B99A00A181A2 /* EMKDatabaseSyncInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKDatabaseSyncInteractor.h; sourceTree = "<group>"; };
 		17395C452347B99A00A181A2 /* EMKDatabaseSyncInteractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKDatabaseSyncInteractor.m; sourceTree = "<group>"; };
@@ -147,6 +162,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		170A013923510328008A02B2 /* Offices */ = {
+			isa = PBXGroup;
+			children = (
+				170A014023510B62008A02B2 /* Office Map */,
+				170A013F23510B57008A02B2 /* Office Details */,
+				170A013E23510B4E008A02B2 /* Offices */,
+				171B79C7235137D200B5F2C7 /* EMKOfficesRouterProtocol.h */,
+				170A013B23510AFB008A02B2 /* EMKOfficesRouter.h */,
+				170A013C23510AFB008A02B2 /* EMKOfficesRouter.m */,
+			);
+			path = Offices;
+			sourceTree = "<group>";
+		};
+		170A013E23510B4E008A02B2 /* Offices */ = {
+			isa = PBXGroup;
+			children = (
+				17395C3F2347B3CE00A181A2 /* EMKOfficesView.h */,
+				17395C402347B3CE00A181A2 /* EMKOfficesView.m */,
+				171B79BD235117F200B5F2C7 /* EMKOfficesViewProtocol.h */,
+				171B79BE2351188700B5F2C7 /* EMKOfficesViewEventHandler.h */,
+				171B79BF235119EE00B5F2C7 /* EMKOfficesPresenter.h */,
+				171B79C0235119EE00B5F2C7 /* EMKOfficesPresenter.m */,
+				171B79C223511D4900B5F2C7 /* EMKOfficesInteractor.h */,
+				171B79C323511D4900B5F2C7 /* EMKOfficesInteractor.m */,
+				171B79C523511D7900B5F2C7 /* EMKOfficesProvider.h */,
+				171B79C623511E8F00B5F2C7 /* EMKOfficesOutput.h */,
+			);
+			path = Offices;
+			sourceTree = "<group>";
+		};
+		170A013F23510B57008A02B2 /* Office Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Office Details";
+			sourceTree = "<group>";
+		};
+		170A014023510B62008A02B2 /* Office Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Office Map";
+			sourceTree = "<group>";
+		};
 		17395C0C2347AA0E00A181A2 = {
 			isa = PBXGroup;
 			children = (
@@ -212,8 +271,6 @@
 		17395C4B234A4CB500A181A2 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				17395C3F2347B3CE00A181A2 /* EMKOfficesTableViewController.h */,
-				17395C402347B3CE00A181A2 /* EMKOfficesTableViewController.m */,
 				17395C65234BBDBD00A181A2 /* EMKOfficeDetailsTableViewController.h */,
 				17395C66234BBDBD00A181A2 /* EMKOfficeDetailsTableViewController.m */,
 				17395C71234CE98400A181A2 /* EMKOfficeMapViewController.h */,
@@ -279,10 +336,12 @@
 		17EB5101234E94BC0008A3A1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				170A013923510328008A02B2 /* Offices */,
 				17BBAF29234EAEB7003AB2F3 /* Database Sync */,
 				17EB5102234E94CF0008A3A1 /* Database Migration */,
 				17BBAF26234EA969003AB2F3 /* EMKMainRouter.h */,
 				17BBAF27234EA969003AB2F3 /* EMKMainRouter.m */,
+				170A013A23510AA5008A02B2 /* EMKRouter.h */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -504,16 +563,19 @@
 				17EB5100234E81C10008A3A1 /* Office_to_Office_2.xcmappingmodel in Sources */,
 				17395C482347BA3200A181A2 /* EMKConstans.m in Sources */,
 				17395C5E234A6CE900A181A2 /* Office+CoreDataClass.m in Sources */,
+				171B79C1235119EE00B5F2C7 /* EMKOfficesPresenter.m in Sources */,
 				17395C64234BA62600A181A2 /* EMKOfficeTableViewCell.m in Sources */,
 				17395C70234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m in Sources */,
 				17EB50FD234E6CAA0008A3A1 /* EMKDatabaseMigrationInteractor.m in Sources */,
 				17395C6A234BC8E500A181A2 /* EMKOfficeDetailsNameCell.m in Sources */,
 				17BBAF2D234EAFE4003AB2F3 /* EMKDatabaseSyncPresenter.m in Sources */,
-				17395C412347B3CE00A181A2 /* EMKOfficesTableViewController.m in Sources */,
+				171B79C423511D4900B5F2C7 /* EMKOfficesInteractor.m in Sources */,
+				17395C412347B3CE00A181A2 /* EMKOfficesView.m in Sources */,
 				17395C1A2347AA0E00A181A2 /* AppDelegate.m in Sources */,
 				17395C4F234A545800A181A2 /* EMKCoreDataHelper.m in Sources */,
 				17395C5D234A6CE900A181A2 /* Office+CoreDataProperties.m in Sources */,
 				17BCAC79234E1C56002B629E /* EMKDatabaseManager.m in Sources */,
+				170A013D23510AFB008A02B2 /* EMKOfficesRouter.m in Sources */,
 				17395C2B2347AA0F00A181A2 /* main.m in Sources */,
 				17395C6D234BC92D00A181A2 /* EMKOfficeDetailsDetailsCell.m in Sources */,
 				17395C73234CE98400A181A2 /* EMKOfficeMapViewController.m in Sources */,

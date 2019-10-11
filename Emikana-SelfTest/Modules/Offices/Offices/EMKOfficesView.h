@@ -8,9 +8,14 @@
 
 @import UIKit;
 
+#import "EMKOfficesViewProtocol.h"
+#import "EMKOfficesViewEventHandler.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMKOfficesTableViewController : UITableViewController
+@interface EMKOfficesView : UITableViewController<EMKOfficesView>
+
+@property (nonatomic, strong) id<EMKOfficesViewEventHandler> eventHandler;
 
 @end
 

@@ -8,6 +8,8 @@
 
 #import "EMKMainRouter.h"
 
+#import "EMKRouter.h"
+
 #import "EMKDatabaseMigrationProgressView.h"
 #import "EMKDatabaseMigrationProgressPresenter.h"
 #import "EMKDatabaseMigrationInteractor.h"
@@ -16,7 +18,11 @@
 #import "EMKDatabaseSyncPresenter.h"
 #import "EMKDatabaseSyncInteractor.h"
 
+#import "EMKOfficesRouter.h"
+
 @interface EMKMainRouter ()
+
+@property (nonatomic, strong) id<EMKRouter> currentRouter;
 
 @end
 
@@ -87,13 +93,28 @@
 }
 
 -(void)startMainFlow {
+	self.currentRouter = [EMKOfficesRouter new];
+	self.currentRouter.mainRouter = self;
+	((EMKOfficesRouter*)self.currentRouter).dbManager = self.dbManager;
+
 	UIApplication *app = [UIApplication sharedApplication];
 	UINavigationController *nc = (UINavigationController*)app.keyWindow.rootViewController;
 
-	UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-	UIViewController *rootVC = [sb instantiateViewControllerWithIdentifier:@"OfficesTable"];
+	[nc setViewControllers:@[self.currentRouter.mainView] animated:YES];
+}
 
-	[nc setViewControllers:@[rootVC] animated:YES];
+-(void)pushView:(id)view {
+	UIApplication *app = [UIApplication sharedApplication];
+	UINavigationController *nc = (UINavigationController*)app.keyWindow.rootViewController;
+
+	[nc pushViewController:view animated:YES];
+}
+
+-(void)popView {
+	UIApplication *app = [UIApplication sharedApplication];
+	UINavigationController *nc = (UINavigationController*)app.keyWindow.rootViewController;
+
+	[nc popViewControllerAnimated:YES];
 }
 
 #pragma mark - Core Data
