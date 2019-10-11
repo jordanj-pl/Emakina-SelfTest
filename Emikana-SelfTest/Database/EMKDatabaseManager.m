@@ -86,13 +86,14 @@
 	[self.cdh.importContext performBlockAndWait:^{
 		typeof(self) strongSelf = weakSelf;
 
-		Office *office = [self.cdh.importContext objectWithID:objectId];
+		Office *office = [strongSelf.cdh.importContext objectWithID:objectId];
 
 		if(office) {
 			office.photoData = data;
-			[strongSelf saveContext:strongSelf.cdh.importContext];
 		}
 	}];
+
+	[self saveContext:self.cdh.importContext];
 }
 
 #pragma mark insert
@@ -105,11 +106,7 @@
 
 	__block NSManagedObject *insertedObject;
 
-	__weak typeof(self) weakSelf = self;
 	[self.cdh.importContext performBlockAndWait:^{
-		typeof(self) strongSelf = weakSelf;
-
-
 		NSManagedObject *existingObject = [self existingObjectInContext:self.cdh.importContext
 														  forEntiry:entity
 										   withUniqueAttributeKey:uniqueAttributeKey
@@ -123,13 +120,11 @@
 
 		[insertedObject setValuesForKeysWithDictionary:properties];
 		((Office*)insertedObject).lastUpdated = syncDate;
-
-		[strongSelf saveContext:self.cdh.importContext];
 	}];
 
+	[self saveContext:self.cdh.importContext];
+
 	return insertedObject;
-
-
 }
 
 #pragma mark delete

@@ -159,7 +159,6 @@ NSString *const kOfficesRetrieveQueue = @"aero.skyisthelimit.EMKOfficesSyncQueue
 				[self.output receiveProgress: self.progress];
 			});
 		}
-
 	}
 
 	[self.dbManager deleteObjectsOlderThan:referenceSyncDate];
