@@ -20,6 +20,7 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, waitUntilMainScreen * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 
 		[self.mainRouter startMainFlow];
+		//TODO If this is first time application is run and no data are retrieved from server e.g. no connectivity, special view should be displayed to user notifying that database is empty. Otherwise app simply uses existing data.
 	});
 }
 

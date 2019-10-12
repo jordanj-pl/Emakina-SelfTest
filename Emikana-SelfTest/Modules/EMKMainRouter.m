@@ -87,6 +87,7 @@
 		[nc setViewControllers:@[syncView] animated:YES];
 
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+			usleep(500);//wait a moment to allow iOS to build all views so user can see progress. It works without the sleep with that exception: updates sent by interactor are not presented to user until view is fully initiated i.e. IBOutlets are build.
 			[interactor sync];
 		});
 	});
