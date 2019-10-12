@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "759-Wf-bE3"; */
+"759-Wf-bE3.text" = "Szczegóły";
+
+/* Class = "UILabel"; text = "Office Name (Id)"; ObjectID = "AGS-Hz-wiU"; */
+"AGS-Hz-wiU.text" = "Nazwa";
+
+/* Class = "UILabel"; text = "Office address"; ObjectID = "Cmv-bu-WNb"; */
+"Cmv-bu-WNb.text" = "Adres";
+
+/* Class = "UITableViewController"; title = "Offices"; ObjectID = "DYx-tE-5nI"; */
+"DYx-tE-5nI.title" = "Biura";
+
+/* Class = "UIViewController"; title = "Map"; ObjectID = "hct-fc-dAE"; */
+"hct-fc-dAE.title" = "Mapa";
+
+/* Class = "UILabel"; text = "Office Name"; ObjectID = "kfb-hN-MEm"; */
+"kfb-hN-MEm.text" = "Nazwa biura";
+
+/* Class = "UINavigationItem"; title = "Offices"; ObjectID = "kwq-bp-gVo"; */
+"kwq-bp-gVo.title" = "Biura";
+
+/* Class = "UITableViewController"; title = "Details"; ObjectID = "mEA-Xk-4pz"; */
+"mEA-Xk-4pz.title" = "Szczegóły";
+
+/* Class = "UILabel"; text = "Show on map"; ObjectID = "xqM-K1-bXv"; */
+"xqM-K1-bXv.text" = "Pokaż na mapie";

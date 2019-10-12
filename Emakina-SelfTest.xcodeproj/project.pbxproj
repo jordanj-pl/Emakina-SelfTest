@@ -33,8 +33,11 @@
 		17395C6D234BC92D00A181A2 /* EMKOfficeDetailsDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C6C234BC92D00A181A2 /* EMKOfficeDetailsDetailsCell.m */; };
 		17395C70234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C6F234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m */; };
 		17395C73234CE98400A181A2 /* EMKOfficeMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17395C72234CE98400A181A2 /* EMKOfficeMapView.m */; };
-		174DD7C623515DE300301A92 /* DatabaseSync.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174DD7C523515DE300301A92 /* DatabaseSync.storyboard */; };
-		174DD7C823515E8900301A92 /* DatabaseMigration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174DD7C723515E8900301A92 /* DatabaseMigration.storyboard */; };
+		174DD7C923520DBF00301A92 /* DatabaseMigration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174DD7CB23520DBF00301A92 /* DatabaseMigration.storyboard */; };
+		174DD7D8235210B000301A92 /* DatabaseSync.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174DD7DA235210B000301A92 /* DatabaseSync.storyboard */; };
+		174DD7E9235215B000301A92 /* DatabaseMigrationMsgs.strings in Resources */ = {isa = PBXBuildFile; fileRef = 174DD7E7235215B000301A92 /* DatabaseMigrationMsgs.strings */; };
+		174DD7EE235217AD00301A92 /* DatabaseSyncMsgs.strings in Resources */ = {isa = PBXBuildFile; fileRef = 174DD7EC235217AD00301A92 /* DatabaseSyncMsgs.strings */; };
+		1775E52E2352213300D088C2 /* OfficesMsgs.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1775E52C2352213300D088C2 /* OfficesMsgs.strings */; };
 		17BBAF28234EA969003AB2F3 /* EMKMainRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BBAF27234EA969003AB2F3 /* EMKMainRouter.m */; };
 		17BBAF2D234EAFE4003AB2F3 /* EMKDatabaseSyncPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BBAF2C234EAFE4003AB2F3 /* EMKDatabaseSyncPresenter.m */; };
 		17BCAC75234D2BBC002B629E /* EMKApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BCAC74234D2BBC002B629E /* EMKApiManager.m */; };
@@ -122,8 +125,26 @@
 		17395C6F234BFA0700A181A2 /* EMKOfficeDetailsImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficeDetailsImageCell.m; sourceTree = "<group>"; };
 		17395C71234CE98400A181A2 /* EMKOfficeMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKOfficeMapView.h; sourceTree = "<group>"; };
 		17395C72234CE98400A181A2 /* EMKOfficeMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKOfficeMapView.m; sourceTree = "<group>"; };
-		174DD7C523515DE300301A92 /* DatabaseSync.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DatabaseSync.storyboard; sourceTree = "<group>"; };
-		174DD7C723515E8900301A92 /* DatabaseMigration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DatabaseMigration.storyboard; sourceTree = "<group>"; };
+		174DD7CA23520DBF00301A92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatabaseMigration.storyboard; sourceTree = "<group>"; };
+		174DD7CD23520DD600301A92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DatabaseMigration.strings; sourceTree = "<group>"; };
+		174DD7D223520F0200301A92 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/DatabaseMigration.strings; sourceTree = "<group>"; };
+		174DD7D72352104D00301A92 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DatabaseMigration.strings; sourceTree = "<group>"; };
+		174DD7D9235210B000301A92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DatabaseSync.storyboard; sourceTree = "<group>"; };
+		174DD7DC235210B500301A92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DatabaseSync.strings; sourceTree = "<group>"; };
+		174DD7DE235210B700301A92 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DatabaseSync.strings; sourceTree = "<group>"; };
+		174DD7E0235210B700301A92 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/DatabaseSync.strings; sourceTree = "<group>"; };
+		174DD7E22352119E00301A92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Offices.strings; sourceTree = "<group>"; };
+		174DD7E42352119F00301A92 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Offices.strings; sourceTree = "<group>"; };
+		174DD7E6235211A000301A92 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Offices.strings; sourceTree = "<group>"; };
+		174DD7E8235215B000301A92 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/DatabaseMigrationMsgs.strings; sourceTree = "<group>"; };
+		174DD7EA235215BD00301A92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DatabaseMigrationMsgs.strings; sourceTree = "<group>"; };
+		174DD7EB235215EB00301A92 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DatabaseMigrationMsgs.strings; sourceTree = "<group>"; };
+		174DD7ED235217AD00301A92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DatabaseSyncMsgs.strings; sourceTree = "<group>"; };
+		174DD7EF235217B800301A92 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/DatabaseSyncMsgs.strings; sourceTree = "<group>"; };
+		174DD7F0235217C500301A92 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DatabaseSyncMsgs.strings; sourceTree = "<group>"; };
+		1775E52D2352213300D088C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OfficesMsgs.strings; sourceTree = "<group>"; };
+		1775E52F2352213D00D088C2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/OfficesMsgs.strings; sourceTree = "<group>"; };
+		1775E5302352214900D088C2 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/OfficesMsgs.strings; sourceTree = "<group>"; };
 		17BBAF26234EA969003AB2F3 /* EMKMainRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKMainRouter.h; sourceTree = "<group>"; };
 		17BBAF27234EA969003AB2F3 /* EMKMainRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMKMainRouter.m; sourceTree = "<group>"; };
 		17BBAF2A234EAF71003AB2F3 /* EMKDatabaseSyncViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMKDatabaseSyncViewProtocol.h; sourceTree = "<group>"; };
@@ -189,6 +210,7 @@
 		170A013923510328008A02B2 /* Offices */ = {
 			isa = PBXGroup;
 			children = (
+				1775E52C2352213300D088C2 /* OfficesMsgs.strings */,
 				170A014023510B62008A02B2 /* Office Map */,
 				170A013F23510B57008A02B2 /* Office Details */,
 				170A013E23510B4E008A02B2 /* Offices */,
@@ -339,6 +361,7 @@
 		17BBAF29234EAEB7003AB2F3 /* Database Sync */ = {
 			isa = PBXGroup;
 			children = (
+				174DD7EC235217AD00301A92 /* DatabaseSyncMsgs.strings */,
 				17395C5F234B9D1100A181A2 /* EMKDatabaseSyncView.h */,
 				17395C60234B9D1100A181A2 /* EMKDatabaseSyncView.m */,
 				17BBAF2A234EAF71003AB2F3 /* EMKDatabaseSyncViewProtocol.h */,
@@ -349,7 +372,7 @@
 				17395C452347B99A00A181A2 /* EMKDatabaseSyncInteractor.m */,
 				170A0137234EB1FB008A02B2 /* EMKDatabaseSyncOutput.h */,
 				170A0138234EB312008A02B2 /* EMKDatabaseSyncProvider.h */,
-				174DD7C523515DE300301A92 /* DatabaseSync.storyboard */,
+				174DD7DA235210B000301A92 /* DatabaseSync.storyboard */,
 			);
 			path = "Database Sync";
 			sourceTree = "<group>";
@@ -390,6 +413,7 @@
 		17EB5102234E94CF0008A3A1 /* Database Migration */ = {
 			isa = PBXGroup;
 			children = (
+				174DD7E7235215B000301A92 /* DatabaseMigrationMsgs.strings */,
 				17EB5103234E95AE0008A3A1 /* EMKDatabaseMigrationProgressView.h */,
 				17EB5104234E95AE0008A3A1 /* EMKDatabaseMigrationProgressView.m */,
 				17EB5106234E96410008A3A1 /* EMKDatabaseMigrationProgressPresenter.h */,
@@ -400,7 +424,7 @@
 				17EB50FC234E6CAA0008A3A1 /* EMKDatabaseMigrationInteractor.m */,
 				17EB510B234E9B340008A3A1 /* EMKDatabaseMigrationProvider.h */,
 				17EB510C234E9B750008A3A1 /* EMKDatabaseMigrationOutput.h */,
-				174DD7C723515E8900301A92 /* DatabaseMigration.storyboard */,
+				174DD7CB23520DBF00301A92 /* DatabaseMigration.storyboard */,
 			);
 			path = "Database Migration";
 			sourceTree = "<group>";
@@ -496,6 +520,8 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
+				de,
 			);
 			mainGroup = 17395C0C2347AA0E00A181A2;
 			productRefGroup = 17395C162347AA0E00A181A2 /* Products */;
@@ -513,9 +539,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				174DD7C623515DE300301A92 /* DatabaseSync.storyboard in Resources */,
+				174DD7D8235210B000301A92 /* DatabaseSync.storyboard in Resources */,
+				174DD7E9235215B000301A92 /* DatabaseMigrationMsgs.strings in Resources */,
 				17395C282347AA0F00A181A2 /* LaunchScreen.storyboard in Resources */,
-				174DD7C823515E8900301A92 /* DatabaseMigration.storyboard in Resources */,
+				174DD7EE235217AD00301A92 /* DatabaseSyncMsgs.strings in Resources */,
+				1775E52E2352213300D088C2 /* OfficesMsgs.strings in Resources */,
+				174DD7C923520DBF00301A92 /* DatabaseMigration.storyboard in Resources */,
 				17395C252347AA0F00A181A2 /* Assets.xcassets in Resources */,
 				17395C232347AA0E00A181A2 /* Offices.storyboard in Resources */,
 			);
@@ -656,6 +685,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				17395C222347AA0E00A181A2 /* Base */,
+				174DD7E22352119E00301A92 /* en */,
+				174DD7E42352119F00301A92 /* de */,
+				174DD7E6235211A000301A92 /* pl */,
 			);
 			name = Offices.storyboard;
 			sourceTree = "<group>";
@@ -666,6 +698,58 @@
 				17395C272347AA0F00A181A2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		174DD7CB23520DBF00301A92 /* DatabaseMigration.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				174DD7CA23520DBF00301A92 /* Base */,
+				174DD7CD23520DD600301A92 /* en */,
+				174DD7D223520F0200301A92 /* pl */,
+				174DD7D72352104D00301A92 /* de */,
+			);
+			name = DatabaseMigration.storyboard;
+			sourceTree = "<group>";
+		};
+		174DD7DA235210B000301A92 /* DatabaseSync.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				174DD7D9235210B000301A92 /* Base */,
+				174DD7DC235210B500301A92 /* en */,
+				174DD7DE235210B700301A92 /* de */,
+				174DD7E0235210B700301A92 /* pl */,
+			);
+			name = DatabaseSync.storyboard;
+			sourceTree = "<group>";
+		};
+		174DD7E7235215B000301A92 /* DatabaseMigrationMsgs.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				174DD7E8235215B000301A92 /* pl */,
+				174DD7EA235215BD00301A92 /* en */,
+				174DD7EB235215EB00301A92 /* de */,
+			);
+			name = DatabaseMigrationMsgs.strings;
+			sourceTree = "<group>";
+		};
+		174DD7EC235217AD00301A92 /* DatabaseSyncMsgs.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				174DD7ED235217AD00301A92 /* en */,
+				174DD7EF235217B800301A92 /* pl */,
+				174DD7F0235217C500301A92 /* de */,
+			);
+			name = DatabaseSyncMsgs.strings;
+			sourceTree = "<group>";
+		};
+		1775E52C2352213300D088C2 /* OfficesMsgs.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1775E52D2352213300D088C2 /* en */,
+				1775E52F2352213D00D088C2 /* de */,
+				1775E5302352214900D088C2 /* pl */,
+			);
+			name = OfficesMsgs.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

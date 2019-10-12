@@ -20,9 +20,9 @@
 
 -(void)receiveOfficeDetails:(EMKOfficeDetails)details {
 	[self.view setOfficeName:details.name];
-	[self.view setOfficeAddress:[NSString stringWithFormat:@"Address:\n%@ %@, %@", details.zip, details.city, details.street]];
-	[self.view setOfficePhone:details.phone];
-	[self.view setOfficeOpeningHours:details.openingHours];
+	[self.view setOfficeAddress:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Address:\n%@ %@, %@", @"OfficesMsgs", @"Address:\n%@ %@, %@"), details.zip, details.city, details.street]];
+	[self.view setOfficePhone: [NSString stringWithFormat: NSLocalizedStringFromTable(@"Phone:\n%@", @"OfficesMsgs", @"Phone:\n%@"), details.phone]];
+	[self.view setOfficeOpeningHours: [NSString stringWithFormat: NSLocalizedStringFromTable(@"Opening Hours:\n%@", @"OfficesMsgs", @"Opening Hours:\n%@"), details.openingHours]];
 	[self.view setOfficePhoto:details.photo];
 }
 

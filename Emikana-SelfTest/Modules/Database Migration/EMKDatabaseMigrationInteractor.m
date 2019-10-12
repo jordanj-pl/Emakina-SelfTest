@@ -40,7 +40,7 @@
 -(void)migrateDatabase {
 
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[self.output receiveStatus:@"Migrating DB model..."];
+		[self.output receiveStatus:NSLocalizedStringFromTable(@"Migrating DB model...", @"DatabaseMigrationMsgs", @"Migrating DB model")];
 	});
 
 	__weak typeof(self) weakSelf = self;
@@ -49,9 +49,9 @@
 
 		dispatch_async(dispatch_get_main_queue(), ^{
 			if(success) {
-				[strongSelf.output receiveStatus:@"Migration completed"];
+				[strongSelf.output receiveStatus:NSLocalizedStringFromTable(@"Migration completed", @"DatabaseMigrationMsgs", @"Migration completed")];
 			} else {
-				[strongSelf.output receiveStatus:@"Migration failed!"];
+				[strongSelf.output receiveStatus:NSLocalizedStringFromTable(@"Migration failed!", @"DatabaseMigrationMsgs", @"Migration failed")];
 			}
 			[strongSelf.output didFinishMigrationWithSuccess:success];
 		});

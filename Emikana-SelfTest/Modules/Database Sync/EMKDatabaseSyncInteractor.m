@@ -95,14 +95,14 @@ const char *kQueueRemainingImagesToDownload = "aero.skyisthelimit.EMKDatabaseSyn
 
 	if(!self.apiManager.isServerReachable) {
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[self.output receiveStatus:@"Offline. Sync skipped."];
+			[self.output receiveStatus:NSLocalizedStringFromTable(@"Offline. Sync skipped.", @"DatabaseSyncMsgs", @"Offline. Sync skipped.")];
 			[self.output didCompleteWithSuccess:NO];
 		});
 		return;
 	}
 
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[self.output receiveStatus:@"Looking for updates..."];
+		[self.output receiveStatus:NSLocalizedStringFromTable(@"Looking for updates...", @"DatabaseSyncMsgs", @"Looking for updates...")];
 	});
 
 	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
@@ -135,7 +135,7 @@ const char *kQueueRemainingImagesToDownload = "aero.skyisthelimit.EMKDatabaseSyn
 
 	if(!dataNeedsReload) {
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[self.output receiveStatus:@"Database is up to date."];
+			[self.output receiveStatus:NSLocalizedStringFromTable(@"Database is up to date.", @"DatabaseSyncMsgs", @"Database is up to date.")];
 			[self.output didCompleteWithSuccess:YES];
 		});
 		return;
@@ -146,7 +146,7 @@ const char *kQueueRemainingImagesToDownload = "aero.skyisthelimit.EMKDatabaseSyn
 	[self.dbManager saveToPersistentStore];
 
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[self.output receiveStatus: @"Update completed."];
+		[self.output receiveStatus: NSLocalizedStringFromTable(@"Update completed.", @"DatabaseSyncMsgs", @"Update completed.")];
 		[self.output receiveProgress: 1.0];
 		[self.output didCompleteWithSuccess: YES];
 	});
@@ -158,7 +158,7 @@ const char *kQueueRemainingImagesToDownload = "aero.skyisthelimit.EMKDatabaseSyn
 
 	self.progress = 0.25;
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[self.output receiveStatus: @"Updating database..."];
+		[self.output receiveStatus: NSLocalizedStringFromTable(@"Updating database...", @"DatabaseSyncMsgs", @"Updating database...")];
 		[self.output receiveProgress: self.progress];
 	});
 
@@ -185,7 +185,7 @@ const char *kQueueRemainingImagesToDownload = "aero.skyisthelimit.EMKDatabaseSyn
 		//Updating UI after each DB entry is not necessary.
 		if(currentObject % 10 == 0) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[self.output receiveStatus: @"Updating database..."];
+				[self.output receiveStatus: NSLocalizedStringFromTable(@"Updating database...", @"DatabaseSyncMsgs", @"Updating database...")];
 				[self.output receiveProgress: self.progress];
 			});
 		}
@@ -211,7 +211,7 @@ const char *kQueueRemainingImagesToDownload = "aero.skyisthelimit.EMKDatabaseSyn
 		strongSelf.progress += (0.5 * 1/strongSelf.imagesToDownload);
 		if(strongSelf.imagesDownloaded % 10 == 0) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				[strongSelf.output receiveStatus: @"Updating database..."];
+				[strongSelf.output receiveStatus: NSLocalizedStringFromTable(@"Updating database...", @"DatabaseSyncMsgs", @"Updating database...")];
 				[strongSelf.output receiveProgress: strongSelf.progress];
 			});
 		}

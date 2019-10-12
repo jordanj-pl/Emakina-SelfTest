@@ -170,7 +170,7 @@
                                             <rect key="frame" x="127" y="16" width="160" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="5p8-Pc-P8c"/>
-                                                <constraint firstAttribute="width" constant="160" id="Mpn-0Q-rQX"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="Mpn-0Q-rQX"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>

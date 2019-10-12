@@ -128,14 +128,14 @@
 
 -(UITableViewCell*)openingHoursCellForTableView:(UITableView*)tableView {
     EMKOfficeDetailsDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"details"];
-    cell.detailsLabel.text = [NSString stringWithFormat:@"Opening Hours:\n%@", self.officeOpeningHours];
+    cell.detailsLabel.text = self.officeOpeningHours;
 
     return cell;
 }
 
 -(UITableViewCell*)phoneCellForTableView:(UITableView*)tableView {
     EMKOfficeDetailsDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"details"];
-    cell.detailsLabel.text = [NSString stringWithFormat:@"Phone:\n%@", self.officePhone];
+    cell.detailsLabel.text = self.officePhone;
 
     return cell;
 }

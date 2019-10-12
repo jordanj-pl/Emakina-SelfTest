@@ -19,7 +19,6 @@
 }
 
 -(void)didFinishMigrationWithSuccess:(BOOL)success {
-	NSLog(@"---------- MIGRATION RESULT: %d", success);
 	[self.mainRouter startDatabaseSync];
 }
 
