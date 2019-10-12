@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EVZ-g8-okt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DYx-tE-5nI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,21 +13,21 @@
             <objects>
                 <tableViewController storyboardIdentifier="OfficesTable" title="Offices" id="DYx-tE-5nI" customClass="EMKOfficesView" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="yeC-HV-1QB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
                         <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OfficeCell" id="5Kc-vE-hJI" customClass="EMKOfficeTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="85"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Kc-vE-hJI" id="Pyg-D1-57y">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Name (Id)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGS-Hz-wiU">
-                                            <rect key="frame" x="20" y="16" width="560" height="21.5"/>
+                                            <rect key="frame" x="20" y="16" width="374" height="21.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="5qu-5F-RIp"/>
                                             </constraints>
@@ -34,7 +36,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Office address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cmv-bu-WNb">
-                                            <rect key="frame" x="20" y="47.5" width="560" height="21.5"/>
+                                            <rect key="frame" x="20" y="47.5" width="374" height="21.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="xQi-F5-lye"/>
                                             </constraints>
@@ -76,21 +78,21 @@
             <objects>
                 <tableViewController storyboardIdentifier="officeDetails" title="Details" id="mEA-Xk-4pz" customClass="EMKOfficeDetailsView" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="b5u-uc-Sfp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
                         <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="name" id="V76-gH-beH" customClass="EMKOfficeDetailsNameCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="66"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V76-gH-beH" id="9pB-E6-shx">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfb-hN-MEm">
-                                            <rect key="frame" x="30" y="21" width="540" height="24"/>
+                                            <rect key="frame" x="30" y="21" width="354" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -108,14 +110,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="details" id="YVj-Lk-MB4" customClass="EMKOfficeDetailsDetailsCell">
-                                <rect key="frame" x="0.0" y="94" width="600" height="52.5"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="52.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YVj-Lk-MB4" id="HGE-iK-MhM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="52.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="52.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="759-Wf-bE3">
-                                            <rect key="frame" x="30" y="16" width="540" height="20.5"/>
+                                            <rect key="frame" x="30" y="16" width="354" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -133,14 +135,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="image" id="5g9-Fq-Q0s" customClass="EMKOfficeDetailsImageCell">
-                                <rect key="frame" x="0.0" y="146.5" width="600" height="160"/>
+                                <rect key="frame" x="0.0" y="146.5" width="414" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5g9-Fq-Q0s" id="nVJ-S0-mEU">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="broken_image_link" translatesAutoresizingMaskIntoConstraints="NO" id="QTK-RD-u5i">
-                                            <rect key="frame" x="30" y="16" width="540" height="128"/>
+                                            <rect key="frame" x="30" y="16" width="354" height="128"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="128" id="4Wk-2d-hib"/>
                                             </constraints>
@@ -158,14 +160,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="button" id="zzT-NP-jl8">
-                                <rect key="frame" x="0.0" y="306.5" width="600" height="62"/>
+                                <rect key="frame" x="0.0" y="306.5" width="414" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zzT-NP-jl8" id="9kD-LS-gSg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="62"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show on map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqM-K1-bXv">
-                                            <rect key="frame" x="220" y="16" width="160" height="30"/>
+                                            <rect key="frame" x="127" y="16" width="160" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="5p8-Pc-P8c"/>
                                                 <constraint firstAttribute="width" constant="160" id="Mpn-0Q-rQX"/>
@@ -205,11 +207,11 @@
             <objects>
                 <viewController storyboardIdentifier="officeDetailsMap" title="Map" id="hct-fc-dAE" customClass="EMKOfficeMapView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gHE-kq-Hie">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qgp-i1-gZJ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -228,119 +230,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JaH-Nm-QGC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1632" y="139"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xX3-eh-Mbp">
-            <objects>
-                <navigationController id="EVZ-g8-okt" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ph9-vB-jY5">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="4gH-lM-PpX" kind="relationship" relationship="rootViewController" id="IFP-Tw-TgJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="geL-DY-aVx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1575" y="139"/>
-        </scene>
-        <!--Database Sync View-->
-        <scene sceneID="2im-sG-yez">
-            <objects>
-                <viewController storyboardIdentifier="databaseSyncView" id="4gH-lM-PpX" customClass="EMKDatabaseSyncView" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lfo-lq-QG0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Y8k-0r-NDt">
-                                <rect key="frame" x="20" y="290" width="560" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="vec-AQ-ggH"/>
-                                </constraints>
-                                <color key="progressTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Syncing data with server..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yA2-Wk-dUo">
-                                <rect key="frame" x="0.0" y="144" width="600" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="qmx-DS-XIc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="yA2-Wk-dUo" firstAttribute="leading" secondItem="ZP2-64-FbY" secondAttribute="leading" id="3sk-iM-YIL"/>
-                            <constraint firstItem="Y8k-0r-NDt" firstAttribute="leading" secondItem="lfo-lq-QG0" secondAttribute="leadingMargin" id="43l-uL-Sqr"/>
-                            <constraint firstItem="ZP2-64-FbY" firstAttribute="trailing" secondItem="yA2-Wk-dUo" secondAttribute="trailing" id="982-3a-Qbn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Y8k-0r-NDt" secondAttribute="trailing" id="Drb-Ay-W0W"/>
-                            <constraint firstItem="yA2-Wk-dUo" firstAttribute="top" secondItem="ZP2-64-FbY" secondAttribute="top" constant="100" id="aS6-au-IUb"/>
-                            <constraint firstItem="Y8k-0r-NDt" firstAttribute="centerY" secondItem="lfo-lq-QG0" secondAttribute="centerY" id="pfN-fi-Kxg"/>
-                            <constraint firstItem="Y8k-0r-NDt" firstAttribute="centerX" secondItem="lfo-lq-QG0" secondAttribute="centerX" id="xYE-qy-GFo"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ZP2-64-FbY"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="EWN-oO-AZK"/>
-                    <connections>
-                        <outlet property="progressView" destination="Y8k-0r-NDt" id="Ahn-Xw-wCy"/>
-                        <outlet property="statusLabel" destination="yA2-Wk-dUo" id="Qr9-y3-63O"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aXN-KH-S6S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-817" y="139"/>
-        </scene>
-        <!--Database Migration Progress View-->
-        <scene sceneID="mgV-a5-i8o">
-            <objects>
-                <viewController storyboardIdentifier="databaseMigrationView" id="ROp-cW-L5b" customClass="EMKDatabaseMigrationProgressView" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WnU-iE-hX3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="oYG-sX-dwL">
-                                <rect key="frame" x="20" y="290" width="560" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="kQi-1s-oyL"/>
-                                </constraints>
-                                <color key="progressTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="trackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Migrating DB model..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2s0-NI-XXk">
-                                <rect key="frame" x="0.0" y="144" width="600" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="b1U-7T-UMO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="oYG-sX-dwL" firstAttribute="centerX" secondItem="WnU-iE-hX3" secondAttribute="centerX" id="2qM-l9-GWi"/>
-                            <constraint firstItem="2s0-NI-XXk" firstAttribute="top" secondItem="TPZ-JO-WoG" secondAttribute="top" constant="100" id="9st-td-5bs"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oYG-sX-dwL" secondAttribute="trailing" id="Ktp-PP-6Aw"/>
-                            <constraint firstItem="TPZ-JO-WoG" firstAttribute="trailing" secondItem="2s0-NI-XXk" secondAttribute="trailing" id="VLS-V6-mOj"/>
-                            <constraint firstItem="oYG-sX-dwL" firstAttribute="leading" secondItem="WnU-iE-hX3" secondAttribute="leadingMargin" id="WRJ-U9-ejV"/>
-                            <constraint firstItem="oYG-sX-dwL" firstAttribute="centerY" secondItem="WnU-iE-hX3" secondAttribute="centerY" id="XTD-Kb-DWS"/>
-                            <constraint firstItem="2s0-NI-XXk" firstAttribute="leading" secondItem="TPZ-JO-WoG" secondAttribute="leading" id="mnn-4K-gPY"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="TPZ-JO-WoG"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="mxr-4h-W5P"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="progressView" destination="oYG-sX-dwL" id="4uG-MN-leP"/>
-                        <outlet property="statusLabel" destination="2s0-NI-XXk" id="fsK-Lc-BcO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mDO-eF-G7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-817" y="-592"/>
         </scene>
     </scenes>
     <resources>

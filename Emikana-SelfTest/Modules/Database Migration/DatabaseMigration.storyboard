@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mL3-GT-KiG">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Database Migration Progress View-->
+        <scene sceneID="IaA-gL-Q4J">
+            <objects>
+                <viewController storyboardIdentifier="databaseMigrationView" id="mL3-GT-KiG" customClass="EMKDatabaseMigrationProgressView" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YlE-3s-gmc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="1cr-LI-sM3">
+                                <rect key="frame" x="20" y="438" width="374" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="2CQ-yp-bkU"/>
+                                </constraints>
+                                <color key="progressTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="trackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Migrating DB model..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vp0-YG-wTt">
+                                <rect key="frame" x="0.0" y="188" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="SVE-l9-miT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="OsV-wF-CRZ" firstAttribute="trailing" secondItem="vp0-YG-wTt" secondAttribute="trailing" id="CWV-1v-o88"/>
+                            <constraint firstItem="1cr-LI-sM3" firstAttribute="centerX" secondItem="YlE-3s-gmc" secondAttribute="centerX" id="ENh-uT-e9k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1cr-LI-sM3" secondAttribute="trailing" id="N6e-mC-F5x"/>
+                            <constraint firstItem="1cr-LI-sM3" firstAttribute="centerY" secondItem="YlE-3s-gmc" secondAttribute="centerY" id="Yzc-tM-JJy"/>
+                            <constraint firstItem="vp0-YG-wTt" firstAttribute="leading" secondItem="OsV-wF-CRZ" secondAttribute="leading" id="k67-dq-Gwj"/>
+                            <constraint firstItem="vp0-YG-wTt" firstAttribute="top" secondItem="OsV-wF-CRZ" secondAttribute="top" constant="100" id="ogo-KX-cXS"/>
+                            <constraint firstItem="1cr-LI-sM3" firstAttribute="leading" secondItem="YlE-3s-gmc" secondAttribute="leadingMargin" id="xmA-ch-vCE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OsV-wF-CRZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8Wn-0T-oNv"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="progressView" destination="1cr-LI-sM3" id="frZ-NO-DgA"/>
+                        <outlet property="statusLabel" destination="vp0-YG-wTt" id="dzS-Vb-Eyl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dhO-bH-C8G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-817" y="-592"/>
+        </scene>
+    </scenes>
+</document>

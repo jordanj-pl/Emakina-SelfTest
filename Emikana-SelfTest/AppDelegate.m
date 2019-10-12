@@ -20,6 +20,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor clearColor];
+
+	UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil] instantiateInitialViewController]];
+	self.window.rootViewController = nc;
+	[self.window makeKeyAndVisible];
+
 	_mainRouter = [EMKMainRouter new];
 	[self.mainRouter startApp];
 

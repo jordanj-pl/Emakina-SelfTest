@@ -44,8 +44,8 @@
 		UIApplication *app = [UIApplication sharedApplication];
 		UINavigationController *nc = (UINavigationController*)app.keyWindow.rootViewController;
 
-		UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-		EMKDatabaseMigrationProgressView *migrationView = [sb instantiateViewControllerWithIdentifier:@"databaseMigrationView"];
+		UIStoryboard *sb = [UIStoryboard storyboardWithName:@"DatabaseMigration" bundle:nil];
+		EMKDatabaseMigrationProgressView *migrationView = [sb instantiateInitialViewController];
 
 		EMKDatabaseMigrationProgressPresenter *presenter = [EMKDatabaseMigrationProgressPresenter new];
 		presenter.view = migrationView;
@@ -71,8 +71,8 @@
 		UIApplication *app = [UIApplication sharedApplication];
 		UINavigationController *nc = (UINavigationController*)app.keyWindow.rootViewController;
 
-		UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-		EMKDatabaseSyncView *syncView = [sb instantiateViewControllerWithIdentifier:@"databaseSyncView"];
+		UIStoryboard *sb = [UIStoryboard storyboardWithName:@"DatabaseSync" bundle:nil];
+		EMKDatabaseSyncView *syncView = [sb instantiateInitialViewController];
 
 		EMKDatabaseSyncPresenter *presenter = [EMKDatabaseSyncPresenter new];
 		presenter.view = syncView;

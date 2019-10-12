@@ -29,8 +29,8 @@
 @implementation EMKOfficesRouter
 
 -(id)mainView {
-	UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-	EMKOfficesView *view = [sb instantiateViewControllerWithIdentifier:@"OfficesTable"];
+	UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Offices" bundle:nil];
+	EMKOfficesView *view = [sb instantiateInitialViewController];
 
 	EMKOfficesPresenter *presenter = [EMKOfficesPresenter new];
 	presenter.view = view;
@@ -52,7 +52,7 @@
 
 -(void)presentOfficeDetails:(NSManagedObjectID *)objectId {
 
-	EMKOfficeDetailsView *view = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"officeDetails"];
+	EMKOfficeDetailsView *view = [[UIStoryboard storyboardWithName:@"Offices" bundle:nil] instantiateViewControllerWithIdentifier:@"officeDetails"];
 
 	EMKOfficeDetailsPresenter *presenter = [EMKOfficeDetailsPresenter new];
 	presenter.view = view;
@@ -71,7 +71,7 @@
 }
 
 -(void)presentOfficeLocation:(NSManagedObjectID *)objectId {
-	EMKOfficeMapView *view = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"officeDetailsMap"];
+	EMKOfficeMapView *view = [[UIStoryboard storyboardWithName:@"Offices" bundle:nil] instantiateViewControllerWithIdentifier:@"officeDetailsMap"];
 
 	EMKOfficeMapPresenter *presenter = [EMKOfficeMapPresenter new];
 	presenter.view = view;

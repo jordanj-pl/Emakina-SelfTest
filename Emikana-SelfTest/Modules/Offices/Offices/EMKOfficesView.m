@@ -28,8 +28,6 @@
 }
 
 -(void)setFetchedResultsController:(NSFetchedResultsController *)frc {
-	NSLog(@"setFetchedResultsController");
-
 	self.frc = frc;
 
 	[self.frc.managedObjectContext performBlockAndWait:^{

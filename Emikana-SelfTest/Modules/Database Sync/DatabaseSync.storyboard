@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jwo-CA-FW4">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Database Sync View-->
+        <scene sceneID="Z11-oz-A2x">
+            <objects>
+                <viewController storyboardIdentifier="databaseSyncView" id="jwo-CA-FW4" customClass="EMKDatabaseSyncView" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bpx-CT-Q8p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="bl9-Og-Lq3">
+                                <rect key="frame" x="20" y="438" width="374" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Qyh-hn-dje"/>
+                                </constraints>
+                                <color key="progressTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="trackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Syncing data with server..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3g-GH-uAz">
+                                <rect key="frame" x="0.0" y="144" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="B5m-N1-veI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="bl9-Og-Lq3" secondAttribute="trailing" id="HIO-gX-xSa"/>
+                            <constraint firstItem="c4y-IZ-vU6" firstAttribute="trailing" secondItem="u3g-GH-uAz" secondAttribute="trailing" id="IRE-uL-ARm"/>
+                            <constraint firstItem="bl9-Og-Lq3" firstAttribute="centerY" secondItem="bpx-CT-Q8p" secondAttribute="centerY" id="JI2-Gw-G5y"/>
+                            <constraint firstItem="bl9-Og-Lq3" firstAttribute="centerX" secondItem="bpx-CT-Q8p" secondAttribute="centerX" id="PfJ-te-ejB"/>
+                            <constraint firstItem="bl9-Og-Lq3" firstAttribute="leading" secondItem="bpx-CT-Q8p" secondAttribute="leadingMargin" id="lqP-L8-1rf"/>
+                            <constraint firstItem="u3g-GH-uAz" firstAttribute="leading" secondItem="c4y-IZ-vU6" secondAttribute="leading" id="ra2-0w-YYi"/>
+                            <constraint firstItem="u3g-GH-uAz" firstAttribute="top" secondItem="c4y-IZ-vU6" secondAttribute="top" constant="100" id="zbr-EW-vRD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c4y-IZ-vU6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CLV-RS-jAk"/>
+                    <connections>
+                        <outlet property="progressView" destination="bl9-Og-Lq3" id="vPy-vv-SzO"/>
+                        <outlet property="statusLabel" destination="u3g-GH-uAz" id="7NZ-eG-3AP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iSi-Kd-1dQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-817" y="139"/>
+        </scene>
+    </scenes>
+</document>
