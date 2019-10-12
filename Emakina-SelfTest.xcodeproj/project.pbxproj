@@ -301,11 +301,10 @@
 				17EB5101234E94BC0008A3A1 /* Modules */,
 				17BCAC76234E1C28002B629E /* Database */,
 				17BCAC72234D2B73002B629E /* Networking */,
-				17395C4C234A4CFA00A181A2 /* Views */,
-				17395C4B234A4CB500A181A2 /* View Controllers */,
 				17395C4A234A4CA600A181A2 /* Data Model */,
 				17395C182347AA0E00A181A2 /* AppDelegate.h */,
 				17395C192347AA0E00A181A2 /* AppDelegate.m */,
+				17395C262347AA0F00A181A2 /* LaunchScreen.storyboard */,
 				17395C242347AA0F00A181A2 /* Assets.xcassets */,
 				17395C292347AA0F00A181A2 /* Info.plist */,
 				17395C2A2347AA0F00A181A2 /* main.m */,
@@ -335,21 +334,6 @@
 				17EB50FF234E81C10008A3A1 /* Office_to_Office_2.xcmappingmodel */,
 			);
 			path = "Data Model";
-			sourceTree = "<group>";
-		};
-		17395C4B234A4CB500A181A2 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		17395C4C234A4CFA00A181A2 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				17395C262347AA0F00A181A2 /* LaunchScreen.storyboard */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		17BBAF29234EAEB7003AB2F3 /* Database Sync */ = {
