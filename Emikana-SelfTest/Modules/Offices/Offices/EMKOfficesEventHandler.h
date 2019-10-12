@@ -11,7 +11,7 @@
 
 @class NSIndexPath;
 
-@protocol EMKOfficesViewEventHandler <NSObject>
+@protocol EMKOfficesEventHandler <NSObject>
 
 -(void)showOffices;
 -(void)didTapRowAtIndexPath:(NSIndexPath*)indexPath;

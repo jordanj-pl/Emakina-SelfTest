@@ -16,7 +16,7 @@
 #import "EMKDatabaseManager.h"
 #import "Office+CoreDataProperties.h"
 #import "EMKOfficeTableViewCell.h"
-#import "EMKOfficeDetailsTableViewController.h"
+#import "EMKOfficeDetailsView.h"
 
 @interface EMKOfficesView ()<NSFetchedResultsControllerDelegate>
 

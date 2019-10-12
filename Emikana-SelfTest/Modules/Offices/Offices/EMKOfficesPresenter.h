@@ -8,7 +8,7 @@
 
 @import Foundation;
 
-#import "EMKOfficesViewEventHandler.h"
+#import "EMKOfficesEventHandler.h"
 #import "EMKOfficesViewProtocol.h"
 #import "EMKOfficesOutput.h"
 #import "EMKOfficesProvider.h"
@@ -17,7 +17,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMKOfficesPresenter : NSObject<EMKOfficesViewEventHandler, EMKOfficesOutput>
+@interface EMKOfficesPresenter : NSObject<EMKOfficesEventHandler, EMKOfficesOutput>
 
 @property (nonatomic, strong) id<EMKOfficesProvider> provider;
 @property (nonatomic, weak) id<EMKOfficesView> view;

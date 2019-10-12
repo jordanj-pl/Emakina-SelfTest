@@ -6,7 +6,7 @@
 //  Copyright © 2019 skyisthelimit.aero. All rights reserved.
 //
 
-#import "EMKOfficeDetailsTableViewController.h"
+#import "EMKOfficeDetailsView.h"
 
 #import "AppDelegate.h"
 #import "EMKMainRouter.h"
@@ -19,28 +19,50 @@
 
 #import "EMKOfficeMapViewController.h"
 
-@interface EMKOfficeDetailsTableViewController ()
+@interface EMKOfficeDetailsView ()
 
-@property (nonatomic, strong) Office *office;
+@property (nonatomic, copy) NSString *officeName;
+@property (nonatomic, copy) UIImage *officePhoto;
+@property (nonatomic, copy) NSString *officeAddress;
+@property (nonatomic, copy) NSString *officeOpeningHours;
+@property (nonatomic, copy) NSString *officePhone;
 
 @end
 
-@implementation EMKOfficeDetailsTableViewController
+@implementation EMKOfficeDetailsView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+	[self.eventHandler showOfficeDetails];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
+-(void)setOfficeName:(NSString *)officeName {
+	_officeName = officeName;
 
-	[self loadOfficeData];
+	[self.tableView reloadData];
 }
 
--(void)loadOfficeData {
-	EMKDatabaseManager *dbManager = ((AppDelegate*)[UIApplication sharedApplication].delegate).mainRouter.dbManager;
-	self.office = (Office*)[dbManager officeByManagedObjectId:self.officeID];
+-(void)setOfficeAddress:(NSString *)officeAddress {
+	_officeAddress = officeAddress;
+
+	[self.tableView reloadData];
+}
+
+-(void)setOfficePhone:(NSString *)officePhone {
+	_officePhone = officePhone;
+
+	[self.tableView reloadData];
+}
+
+-(void)setOfficeOpeningHours:(NSString *)officeOpeningHours {
+	_officeOpeningHours = officeOpeningHours;
+
+	[self.tableView reloadData];
+}
+
+-(void)setOfficePhoto:(UIImage *)officePhoto {
+	_officePhoto = officePhoto;
 
 	[self.tableView reloadData];
 }
@@ -90,7 +112,7 @@
 
 -(UITableViewCell*)nameCellForTableView:(UITableView*)tableView {
     EMKOfficeDetailsNameCell *cell = [tableView dequeueReusableCellWithIdentifier:@"name"];
-    cell.nameLabel.text = self.office.name;
+    cell.nameLabel.text = self.officeName;
 
     return cell;
 }
@@ -98,8 +120,8 @@
 -(UITableViewCell*)imageCellForTableView:(UITableView*)tableView {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"image"];
 
-	if(self.office.photo) {
-		cell.imageView.image = self.office.photo;
+	if(self.officePhoto) {
+		cell.imageView.image = self.officePhoto;
 	}
 
     return cell;
@@ -107,21 +129,21 @@
 
 -(UITableViewCell*)addressCellForTableView:(UITableView*)tableView {
     EMKOfficeDetailsDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"details"];
-    cell.detailsLabel.text = [NSString stringWithFormat:@"Address:\n%@ %@, %@", self.office.zip, self.office.city, self.office.street];
+    cell.detailsLabel.text = self.officeAddress;
 
     return cell;
 }
 
 -(UITableViewCell*)openingHoursCellForTableView:(UITableView*)tableView {
     EMKOfficeDetailsDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"details"];
-    cell.detailsLabel.text = [NSString stringWithFormat:@"Opening Hours:\n%@", self.office.openingHours];
+    cell.detailsLabel.text = [NSString stringWithFormat:@"Opening Hours:\n%@", self.officeOpeningHours];
 
     return cell;
 }
 
 -(UITableViewCell*)phoneCellForTableView:(UITableView*)tableView {
     EMKOfficeDetailsDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"details"];
-    cell.detailsLabel.text = [NSString stringWithFormat:@"Phone:\n%@", self.office.phone];
+    cell.detailsLabel.text = [NSString stringWithFormat:@"Phone:\n%@", self.officePhone];
 
     return cell;
 }
@@ -137,23 +159,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 	if(indexPath.row == 5) {
-
-		EMKOfficeMapViewController *mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"officeDetailsMap"];
-		mapVC.officeID = self.office.objectID;
-
-		[self.navigationController pushViewController:mapVC animated:YES];
-
+		[self.eventHandler showOfficeMap];
 	}
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

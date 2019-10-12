@@ -9,11 +9,14 @@
 @import UIKit;
 @import CoreData;
 
+#import "EMKOfficeDetailsViewProtocol.h"
+#import "EMKOfficeDetailsEventHandler.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMKOfficeDetailsTableViewController : UITableViewController
+@interface EMKOfficeDetailsView : UITableViewController<EMKOfficeDetailsView>
 
-@property (nonatomic, strong) NSManagedObjectID *officeID;
+@property (nonatomic, strong) id<EMKOfficeDetailsEventHandler> eventHandler;
 
 @end
 

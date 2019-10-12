@@ -14,7 +14,11 @@
 #import "EMKOfficesPresenter.h"
 #import "EMKOfficesInteractor.h"
 
-#import "EMKOfficeDetailsTableViewController.h"
+#import "EMKOfficeDetailsView.h"
+#import "EMKOfficeDetailsPresenter.h"
+#import "EMKOfficeDetailsInteractor.h"
+
+#import "EMKOfficeMapViewController.h"
 
 @interface EMKOfficesRouter ()
 
@@ -46,14 +50,28 @@
 
 -(void)presentOfficeDetails:(NSManagedObjectID *)objectId {
 
-	EMKOfficeDetailsTableViewController *officeView = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"officeDetails"];
-	officeView.officeID = objectId;
+	EMKOfficeDetailsView *view = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"officeDetails"];
 
-	[self.mainRouter pushView:officeView];
+	EMKOfficeDetailsPresenter *presenter = [EMKOfficeDetailsPresenter new];
+	presenter.view = view;
+	presenter.router = self;
+
+	view.eventHandler = presenter;
+
+	EMKOfficeDetailsInteractor *interactor = [[EMKOfficeDetailsInteractor alloc] initWithDatabaseManager:self.dbManager];
+	interactor.output = presenter;
+
+	presenter.provider = interactor;
+
+	presenter.officeId = objectId;
+
+	[self.mainRouter pushView:view];
 }
 
 -(void)presentOfficeLocation:(NSManagedObjectID *)objectId {
-
+	EMKOfficeMapViewController *view = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"officeDetailsMap"];
+	view.officeID = objectId;
+	[self.mainRouter pushView:view];
 }
 
 @end

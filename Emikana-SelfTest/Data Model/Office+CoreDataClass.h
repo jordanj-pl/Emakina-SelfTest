@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Office : NSManagedObject
 
 -(void)setValuesForKeysWithDictionary:(NSDictionary*)dictionary;
--(UIImage*)photo;
 
 @end
 
