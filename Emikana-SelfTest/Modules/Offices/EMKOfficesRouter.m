@@ -18,7 +18,9 @@
 #import "EMKOfficeDetailsPresenter.h"
 #import "EMKOfficeDetailsInteractor.h"
 
-#import "EMKOfficeMapViewController.h"
+#import "EMKOfficeMapView.h"
+#import "EMKOfficeMapPresenter.h"
+#import "EMKOfficeMapInteractor.h"
 
 @interface EMKOfficesRouter ()
 
@@ -69,8 +71,20 @@
 }
 
 -(void)presentOfficeLocation:(NSManagedObjectID *)objectId {
-	EMKOfficeMapViewController *view = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"officeDetailsMap"];
-	view.officeID = objectId;
+	EMKOfficeMapView *view = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"officeDetailsMap"];
+
+	EMKOfficeMapPresenter *presenter = [EMKOfficeMapPresenter new];
+	presenter.view = view;
+	presenter.router = self;
+	presenter.officeId = objectId;
+
+	view.eventHandler = presenter;
+
+	EMKOfficeMapInteractor *interactor = [[EMKOfficeMapInteractor alloc] initWithDatabaseManager:self.dbManager];
+	interactor.output = presenter;
+
+	presenter.provider = interactor;
+
 	[self.mainRouter pushView:view];
 }
 

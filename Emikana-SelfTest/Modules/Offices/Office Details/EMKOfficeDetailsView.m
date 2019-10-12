@@ -8,16 +8,8 @@
 
 #import "EMKOfficeDetailsView.h"
 
-#import "AppDelegate.h"
-#import "EMKMainRouter.h"
-
-#import "EMKDatabaseManager.h"
-#import "Office+CoreDataProperties.h"
-
 #import "EMKOfficeDetailsNameCell.h"
 #import "EMKOfficeDetailsDetailsCell.h"
-
-#import "EMKOfficeMapViewController.h"
 
 @interface EMKOfficeDetailsView ()
 

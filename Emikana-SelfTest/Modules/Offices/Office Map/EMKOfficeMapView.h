@@ -9,11 +9,13 @@
 @import UIKit;
 @import CoreData;
 
+#import "EMKOfficeMapViewProtocol.h"
+#import "EMKOfficeMapEventHandler.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMKOfficeMapViewController : UIViewController
+@interface EMKOfficeMapView : UIViewController<EMKOfficeMapView>
 
-@property (nonatomic, strong) NSManagedObjectID *officeID;
+@property (nonatomic, strong) id<EMKOfficeMapEventHandler> eventHandler;
 
 @end
 

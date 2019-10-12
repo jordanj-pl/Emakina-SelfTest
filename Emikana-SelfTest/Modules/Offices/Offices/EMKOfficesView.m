@@ -10,13 +10,8 @@
 
 @import CoreData;
 
-#import "AppDelegate.h"
-#import "EMKMainRouter.h"
-
-#import "EMKDatabaseManager.h"
 #import "Office+CoreDataProperties.h"
 #import "EMKOfficeTableViewCell.h"
-#import "EMKOfficeDetailsView.h"
 
 @interface EMKOfficesView ()<NSFetchedResultsControllerDelegate>
 
